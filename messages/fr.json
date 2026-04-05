@@ -1,0 +1,117 @@
+{
+  "Nav": {
+    "switchLanguage": "View in English",
+    "pricing": "Tarifs",
+    "workspaceLabel": "Choisissez votre etape",
+    "benefitsPlanning": "Demarrer et planifier",
+    "compliancePlanning": "Echeances et conformite"
+  },
+  "Home": {
+    "title": "Gerez votre entreprise de contractuel avec plus de confiance.",
+    "subtitle": "CanStack aide les travailleurs autonomes canadiens a planifier leurs avantages et leurs impots, puis a suivre les retenues sur la paie, les taxes de vente et les echeances de conformite provinciales sans equipe administrative.",
+    "primaryCta": "Ouvrir Echeances et conformite",
+    "secondaryCta": "Commencer la planification",
+    "trustOne": "Concu pour les proprietaires de petites entreprises autonomes",
+    "trustTwo": "Aucune fausse API de conformite",
+    "trustThree": "Calculs locaux bases sur des regles",
+    "workspaceBenefitsTitle": "Demarrer et planifier",
+    "workspaceBenefitsBody": "Pour les travailleurs autonomes qui mettent en place leurs avantages, leur visibilite fiscale et leur plan d'epargne.",
+    "workspaceComplianceTitle": "Echeances et conformite",
+    "workspaceComplianceBody": "Pour les proprietaires d'entreprise qui suivent les remises, les taxes, la paie et les obligations provinciales.",
+    "previewEyebrow": "Apercu de l'espace",
+    "previewLabel": "Ce que cet espace vous apporte",
+    "previewModePlanning": "Planification",
+    "previewModeCompliance": "Conformite",
+    "previewPlanningBody": "Voyez le cote planification avant de remplir tout le parcours d'accueil.",
+    "previewComplianceBody": "Voyez comment l'espace conformite met en avant ce qui compte ensuite.",
+    "previewPlanningPointOne": "Estimation d'impot et droit REER en un coup d'oeil",
+    "previewPlanningPointTwo": "Recommandations de fournisseurs liees a votre profil",
+    "previewPlanningPointThree": "Avantages, visibilite fiscale et planification au meme endroit",
+    "previewCompliancePointOne": "Prochaines echeances de paie et de taxes de vente",
+    "previewCompliancePointTwo": "Simulateur de penalite avec mentions d'estimation",
+    "previewCompliancePointThree": "Vue calendrier pour les obligations recurrentes"
+  },
+  "Quiz": {
+    "title": "1. Questionnaire d'accueil",
+    "body": "On collecte seulement le minimum: courriel pour l'authentification plus province et reponses de haut niveau pour les recommandations.",
+    "email": "Courriel",
+    "emailHint": "Seuls le courriel et la province doivent faire partie du profil persistant.",
+    "province": "Province ou territoire",
+    "incomeRange": "Fourchette de revenu",
+    "familySize": "Taille du foyer",
+    "workType": "Type de travail"
+  },
+  "Snapshot": {
+    "title": "Apercu du tableau de bord",
+    "body": "Le reste du produit reagit immediatement a l'etat du questionnaire. Aucun faux appel API.",
+    "taxableIncome": "Revenu imposable estime",
+    "estimatedTax": "Impot total estime",
+    "netIncome": "Revenu net estime",
+    "rrspRoom": "Droit REER"
+  },
+  "Recommendations": {
+    "title": "2. Moteur de recommandations",
+    "body": "Sortie basee sur des regles, reliee a de vrais fournisseurs et a des priorites pertinentes pour les contractuels.",
+    "cta": "Ouvrir le fournisseur"
+  },
+  "Resources": {
+    "title": "3. Ressources",
+    "body": "Liens directs vers de vrais fournisseurs canadiens."
+  },
+  "Tax": {
+    "title": "4. Estimateur d'impot",
+    "body": "La logique des paliers federal et provinciaux 2025 est locale. Il s'agit d'une estimation, pas d'un service de declaration.",
+    "federal": "Impot federal",
+    "provincial": "Impot provincial / territorial",
+    "total": "Estimation combinee",
+    "disclaimer": "Exclut le RPC, l'AE, les credits, les deductions, les integrations salariales corporatives et certaines surtaxes."
+  },
+  "Rrsp": {
+    "title": "5. Calculateur du REER",
+    "body": "Utilise la formule demandee par l'ARC: 18 % du revenu gagne de l'annee precedente.",
+    "prevIncome": "Hypothese de revenu de l'annee precedente",
+    "room": "Droit de cotisation estime",
+    "disclaimer": "Le vrai droit ARC peut differer s'il existe un facteur d'equivalence, des droits reportes ou un revenu gagne plus faible."
+  },
+  "Checkout": {
+    "eyebrow": "6. Acces payant Stripe",
+    "title": "Choisissez un forfait puis envoyez l'utilisateur vers Stripe Checkout.",
+    "body": "Cette section utilise un vrai abonnement Stripe quand les identifiants de prix et la cle secrete sont configures. Sans variables d'environnement, la page reste fonctionnelle et indique que Stripe n'est pas configure.",
+    "selectedPlan": "Forfait choisi",
+    "includes": "Inclus",
+    "cta": "Continuer vers Stripe",
+    "loading": "Ouverture du paiement...",
+    "error": "Impossible de lancer Stripe."
+  },
+  "Pricing": {
+    "title": "Forfaits",
+    "back": "Retour au tableau de bord",
+    "cta": "Choisir ce forfait"
+  },
+  "Success": {
+    "title": "Abonnement active",
+    "body": "Stripe a redirige correctement. En production, liez cette page a des droits confirmes par webhook avant de deverrouiller les fonctions premium.",
+    "cta": "Retourner a CanStack"
+  },
+  "compliance": {
+    "title": "Centre de conformite",
+    "subtitle": "Toutes vos echeances de l'ARC et des provinces au meme endroit",
+    "wizard": {
+      "step1": "Dans quelle province exercez-vous vos activites?",
+      "step2": "Quelle structure de travail vous correspond le mieux?",
+      "step3": "Dans quel secteur d'activite etes-vous?",
+      "step4": "Avez-vous des employes a la paie?",
+      "step5": "Etes-vous inscrit a la TPS/TVH?",
+      "step6": "Quel est votre revenu annuel estime?"
+    },
+    "dashboard": {
+      "next30": "Echeances des 30 prochains jours",
+      "penaltyForecaster": "Simulateur de penalite",
+      "fullCalendar": "Calendrier complet de conformite",
+      "exportIcs": "Exporter vers le calendrier (.ics)",
+      "markDone": "Marquer comme fait",
+      "disclaimer": "Ces estimations reposent sur les regles publiques de l'ARC et des provinces. Il ne s'agit pas d'un avis fiscal ou juridique. Verifiez toutes les echeances avec votre comptable.",
+      "locked": "Debloquer le calendrier complet — Passez a Pro"
+    }
+  }
+}

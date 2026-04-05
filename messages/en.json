@@ -1,0 +1,117 @@
+{
+  "Nav": {
+    "switchLanguage": "Voir en francais",
+    "pricing": "Pricing",
+    "workspaceLabel": "Choose your stage",
+    "benefitsPlanning": "Start & Plan",
+    "compliancePlanning": "Deadlines & Compliance"
+  },
+  "Home": {
+    "title": "Run your contractor business with more confidence.",
+    "subtitle": "CanStack helps self-employed Canadians plan benefits and taxes, then stay ahead of payroll, sales tax, and provincial compliance deadlines without needing a back office.",
+    "primaryCta": "Open Deadlines & Compliance",
+    "secondaryCta": "Start Planning",
+    "trustOne": "Built for self-employed business owners",
+    "trustTwo": "No fake compliance APIs",
+    "trustThree": "Local rule-based calculations",
+    "workspaceBenefitsTitle": "Start & Plan",
+    "workspaceBenefitsBody": "For self-employed contractors setting up benefits, tax visibility, and savings planning.",
+    "workspaceComplianceTitle": "Deadlines & Compliance",
+    "workspaceComplianceBody": "For business owners tracking remittances, tax deadlines, payroll, and provincial obligations.",
+    "previewEyebrow": "Workspace preview",
+    "previewLabel": "What this workspace gives you",
+    "previewModePlanning": "Planning",
+    "previewModeCompliance": "Compliance",
+    "previewPlanningBody": "See the planning side before you fill in the full onboarding flow.",
+    "previewComplianceBody": "See how the compliance workspace surfaces what matters next.",
+    "previewPlanningPointOne": "Tax estimate and RRSP room at a glance",
+    "previewPlanningPointTwo": "Provider recommendations tied to your profile",
+    "previewPlanningPointThree": "Benefits, tax visibility, and planning in one place",
+    "previewCompliancePointOne": "Upcoming payroll and sales-tax deadlines",
+    "previewCompliancePointTwo": "Penalty forecaster with estimate disclaimers",
+    "previewCompliancePointThree": "Calendar view for recurring obligations"
+  },
+  "Quiz": {
+    "title": "1. Onboarding quiz",
+    "body": "Collect only the minimum data needed: email for auth plus province and high-level quiz answers for recommendations.",
+    "email": "Email",
+    "emailHint": "Only email and province should be treated as persistent user profile data.",
+    "province": "Province or territory",
+    "incomeRange": "Income range",
+    "familySize": "Family size",
+    "workType": "Work type"
+  },
+  "Snapshot": {
+    "title": "Live dashboard snapshot",
+    "body": "The rest of the product reacts to the quiz state immediately. No fake API placeholders.",
+    "taxableIncome": "Estimated taxable income",
+    "estimatedTax": "Estimated total tax",
+    "netIncome": "Estimated after-tax income",
+    "rrspRoom": "RRSP room"
+  },
+  "Recommendations": {
+    "title": "2. Recommendation engine",
+    "body": "Rule-based output mapped to real affiliate destinations and contractor-specific coverage priorities.",
+    "cta": "Open provider"
+  },
+  "Resources": {
+    "title": "3. Resource dashboard",
+    "body": "Direct links to real Canadian providers."
+  },
+  "Tax": {
+    "title": "4. Tax estimator",
+    "body": "2025 federal and provincial bracket logic is hardcoded locally. This is an estimate, not a filing workflow.",
+    "federal": "Federal tax",
+    "provincial": "Provincial / territorial tax",
+    "total": "Combined estimate",
+    "disclaimer": "Excludes CPP, EI, credits, deductions, integration with corporation payroll, and province-specific surtaxes."
+  },
+  "Rrsp": {
+    "title": "5. RRSP room calculator",
+    "body": "Uses the CRA formula requested: 18% of prior-year earned income.",
+    "prevIncome": "Prior-year income assumption",
+    "room": "Estimated RRSP room",
+    "disclaimer": "Real CRA room can differ if you have pension adjustments, unused room carry-forward, or low earned income."
+  },
+  "Checkout": {
+    "eyebrow": "6. Stripe subscription gate",
+    "title": "Pick a plan and send the user to Stripe Checkout.",
+    "body": "This uses real Stripe subscription checkout when price IDs and a secret key are configured. Without env vars, the page stays functional and reports that Stripe is not configured.",
+    "selectedPlan": "Selected plan",
+    "includes": "Includes",
+    "cta": "Continue to Stripe",
+    "loading": "Opening checkout...",
+    "error": "Unable to start checkout."
+  },
+  "Pricing": {
+    "title": "Subscription plans",
+    "back": "Back to dashboard",
+    "cta": "Choose plan"
+  },
+  "Success": {
+    "title": "Subscription activated",
+    "body": "Stripe redirected back successfully. In production, bind this to webhook-confirmed entitlements before unlocking premium features.",
+    "cta": "Return to CanStack"
+  },
+  "compliance": {
+    "title": "Compliance Hub",
+    "subtitle": "All your CRA and provincial deadlines in one place",
+    "wizard": {
+      "step1": "Which province do you work in?",
+      "step2": "What best describes your work structure?",
+      "step3": "What industry are you in?",
+      "step4": "Do you have employees on payroll?",
+      "step5": "Are you registered for GST/HST?",
+      "step6": "What is your estimated annual revenue?"
+    },
+    "dashboard": {
+      "next30": "Due in the next 30 days",
+      "penaltyForecaster": "Penalty Forecaster",
+      "fullCalendar": "Full Compliance Calendar",
+      "exportIcs": "Export to Calendar (.ics)",
+      "markDone": "Mark as done",
+      "disclaimer": "These are estimates based on public CRA and provincial rules. This is not tax or legal advice. Verify all deadlines with your accountant.",
+      "locked": "Unlock full calendar — Upgrade to Pro"
+    }
+  }
+}
