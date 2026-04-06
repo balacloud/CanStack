@@ -86,3 +86,57 @@ create policy "Users can only access own profile"
 
 create policy "Users can only access own acknowledgements"
   on compliance_acknowledgements for all using (auth.uid() = user_id);
+
+-- ============================================================
+-- Admin: Data Sourcing System (Phase 1)
+-- No RLS — accessed exclusively via service-role key in
+-- server-side Route Handlers. Never exposed to anon key.
+-- ============================================================
+
+-- Source Registry: every official URL we monitor
+create table if not exists data_sources (
+  id              uuid primary key default gen_random_uuid(),
+  slug            text unique not null,
+  jurisdiction    text not null,
+  category        text not null,
+  source_url      text not null,
+  document_ref    text,
+  effective_date  date,
+  update_cycle    text not null,
+  next_expected   date,
+  ts_file         text not null,
+  ts_constant     text not null,
+  notes           text,
+  is_active       boolean default true,
+  created_at      timestamptz default now(),
+  updated_at      timestamptz default now()
+);
+
+-- Snapshots: content hash per fetch attempt (change detection)
+create table if not exists source_snapshots (
+  id              uuid primary key default gen_random_uuid(),
+  source_id       uuid not null references data_sources(id) on delete cascade,
+  fetched_at      timestamptz default now(),
+  http_status     integer,
+  content_hash    text,
+  content_length  integer,
+  hash_changed    boolean not null default false,
+  error_message   text,
+  created_at      timestamptz default now()
+);
+
+create index if not exists idx_snapshots_source_time
+  on source_snapshots(source_id, fetched_at desc);
+
+-- Audit Log: immutable append-only action history
+create table if not exists audit_log (
+  id              uuid primary key default gen_random_uuid(),
+  action          text not null,
+  source_id       uuid references data_sources(id),
+  details         jsonb,
+  actor           text not null default 'system',
+  created_at      timestamptz default now()
+);
+
+create index if not exists idx_audit_created
+  on audit_log(created_at desc);
