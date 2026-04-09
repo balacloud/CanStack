@@ -328,6 +328,24 @@ export function ComplianceDashboard({
                 <CardTitle>WCB / WSIB Premium</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
+                {profile.workType === "sole-prop" &&
+                  profile.province === "BC" && (
+                    <div className="rounded-md border border-blue-200 bg-blue-50 p-3 text-xs text-blue-800">
+                      <strong>BC — Owner coverage is voluntary.</strong> As a
+                      sole proprietor, you are not automatically covered by
+                      WorkSafeBC. The estimate below reflects your employees
+                      only. Enrol separately if you want personal coverage.
+                    </div>
+                  )}
+                {profile.workType === "sole-prop" &&
+                  profile.province === "AB" && (
+                    <div className="rounded-md border border-blue-200 bg-blue-50 p-3 text-xs text-blue-800">
+                      <strong>AB — Owner coverage is opt-out.</strong> Alberta
+                      sole proprietors are included in WCB coverage by default
+                      but may apply to opt out. The estimate below reflects your
+                      employees. Review your coverage status at wcb.ab.ca.
+                    </div>
+                  )}
                 {isUnverifiedOntarioWsibRate || wcbEstimate?.premiumEstimate === null ? (
                   <div className="rounded-md border border-yellow-300 bg-yellow-50 p-4 text-sm text-yellow-800">
                     <strong>WCB Premium Estimate Unavailable</strong>
