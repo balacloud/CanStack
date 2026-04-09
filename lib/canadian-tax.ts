@@ -24,26 +24,39 @@ const BPA_2025_FULL = 16129; // full amount for income ≤ $173,205
 const BPA_2025_MIN = 14538; // minimum at income ≥ $253,414
 const BPA_2025_FULL_THRESHOLD = 173205;
 const BPA_2025_MIN_THRESHOLD = 253414;
-const FEDERAL_LOWEST_RATE_2025 = 0.15; // CRA BPA credit rate
+const FEDERAL_LOWEST_RATE_2025 = 0.15;
 
-// RRSP 2025 — 18% of prior-year earned income, capped at CRA annual limit
+// BPA 2026 — 2.0% CRA indexation; credit rate drops to 14% (new first bracket)
+const BPA_2026_FULL = 16452;
+const BPA_2026_MIN = 14829;
+const BPA_2026_FULL_THRESHOLD = 176669; // $173,205 × 1.02
+const BPA_2026_MIN_THRESHOLD = 258482; // confirmed by CRA 2026 brackets
+const FEDERAL_LOWEST_RATE_2026 = 0.14;
+
+// RRSP — 18% of prior-year earned income, capped at CRA annual limit
 const RRSP_CONTRIBUTION_RATE = 0.18;
 const RRSP_2025_CAP = 32490;
+const RRSP_2026_CAP = 33810;
 
-function calculateBpaCredit(income: number): number {
+function calculateBpaCredit(income: number, taxYear: number): number {
+  const full = taxYear >= 2026 ? BPA_2026_FULL : BPA_2025_FULL;
+  const min = taxYear >= 2026 ? BPA_2026_MIN : BPA_2025_MIN;
+  const fullThreshold = taxYear >= 2026 ? BPA_2026_FULL_THRESHOLD : BPA_2025_FULL_THRESHOLD;
+  const minThreshold = taxYear >= 2026 ? BPA_2026_MIN_THRESHOLD : BPA_2025_MIN_THRESHOLD;
+  const rate = taxYear >= 2026 ? FEDERAL_LOWEST_RATE_2026 : FEDERAL_LOWEST_RATE_2025;
+
   let bpa: number;
-  if (income <= BPA_2025_FULL_THRESHOLD) {
-    bpa = BPA_2025_FULL;
-  } else if (income >= BPA_2025_MIN_THRESHOLD) {
-    bpa = BPA_2025_MIN;
+  if (income <= fullThreshold) {
+    bpa = full;
+  } else if (income >= minThreshold) {
+    bpa = min;
   } else {
-    const phaseoutRange = BPA_2025_MIN_THRESHOLD - BPA_2025_FULL_THRESHOLD;
-    const incomeOver = income - BPA_2025_FULL_THRESHOLD;
-    const reduction =
-      ((BPA_2025_FULL - BPA_2025_MIN) * incomeOver) / phaseoutRange;
-    bpa = BPA_2025_FULL - reduction;
+    const phaseoutRange = minThreshold - fullThreshold;
+    const incomeOver = income - fullThreshold;
+    const reduction = ((full - min) * incomeOver) / phaseoutRange;
+    bpa = full - reduction;
   }
-  return bpa * FEDERAL_LOWEST_RATE_2025;
+  return bpa * rate;
 }
 
 const federalBrackets2025: TaxBracket[] = [
@@ -51,6 +64,15 @@ const federalBrackets2025: TaxBracket[] = [
   { upTo: 114750, rate: 0.205 },
   { upTo: 177882, rate: 0.26 },
   { upTo: 253414, rate: 0.29 },
+  { upTo: Number.POSITIVE_INFINITY, rate: 0.33 },
+];
+
+// 2026: 2.0% indexation on thresholds; first bracket rate drops from 14.5% to 14%
+const federalBrackets2026: TaxBracket[] = [
+  { upTo: 58523, rate: 0.14 },
+  { upTo: 117045, rate: 0.205 },
+  { upTo: 181440, rate: 0.26 },
+  { upTo: 258482, rate: 0.29 },
   { upTo: Number.POSITIVE_INFINITY, rate: 0.33 },
 ];
 
@@ -179,9 +201,14 @@ export function calculateProgressiveTax(income: number, brackets: TaxBracket[]) 
   return Math.max(0, total);
 }
 
-export function calculateCombinedTaxEstimate(income: number, province: string) {
-  const federalTaxBeforeCredits = calculateProgressiveTax(income, federalBrackets2025);
-  const bpaCredit = calculateBpaCredit(income);
+export function calculateCombinedTaxEstimate(
+  income: number,
+  province: string,
+  taxYear: number = new Date().getFullYear(),
+) {
+  const federalBrackets = taxYear >= 2026 ? federalBrackets2026 : federalBrackets2025;
+  const federalTaxBeforeCredits = calculateProgressiveTax(income, federalBrackets);
+  const bpaCredit = calculateBpaCredit(income, taxYear);
   const federalTax = Math.max(0, federalTaxBeforeCredits - bpaCredit);
   const provincialTax = calculateProgressiveTax(
     income,
@@ -197,9 +224,10 @@ export function calculateCombinedTaxEstimate(income: number, province: string) {
   };
 }
 
-export function calculateRrspRoom(previousYearIncome: number) {
-  return Math.min(
-    Math.max(0, previousYearIncome * RRSP_CONTRIBUTION_RATE),
-    RRSP_2025_CAP,
-  );
+export function calculateRrspRoom(
+  previousYearIncome: number,
+  taxYear: number = new Date().getFullYear(),
+) {
+  const cap = taxYear >= 2026 ? RRSP_2026_CAP : RRSP_2025_CAP;
+  return Math.min(Math.max(0, previousYearIncome * RRSP_CONTRIBUTION_RATE), cap);
 }
