@@ -19,38 +19,19 @@ Next action:
 - manually verify at `canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html`
 - if confirmed, patch `lib/compliance-rules.ts` NS entry
 
-### 2. Basic Personal Amount (BPA) not applied to tax estimates
+### 2. ~~Basic Personal Amount (BPA) not applied to tax estimates~~ — RESOLVED April 9, 2026
 
-Severity: P0
+Severity: P0 → resolved
 
-Details:
-
-- `lib/canadian-tax.ts` calculates progressive tax but does not apply the BPA non-refundable credit
-- every tax estimate in the app is overstated for all income levels
-- 2025 BPA: $16,129 (full) / $14,538 (minimum at income ≥ $253,414)
-- 2026 BPA: $16,452 (full) / $14,829 (minimum at income ≥ $258,482)
-- all 3 LLMs confirmed BPA values unanimously
-
-Next action:
-
-- implement BPA credit in `calculateCombinedTaxEstimate`
+Fix: commit 4088e1e — BPA credit applied in `calculateCombinedTaxEstimate`. Full $16,129 phases out to $14,538 between $173,205–$253,414 income; credit at 15% CRA rate.
 
 ## Open — P1 (Fix Before Launch)
 
-### 3. RRSP room has no annual dollar cap
+### 3. ~~RRSP room has no annual dollar cap~~ — RESOLVED April 9, 2026
 
-Severity: P1
+Severity: P1 → resolved
 
-Details:
-
-- `lib/canadian-tax.ts` line 171: `previousYearIncome * 0.18` with no ceiling
-- 2025 cap: $32,490 (income ceiling: $180,500)
-- 2026 cap: $33,810 (income ceiling: $187,833)
-- all 3 LLMs confirmed unanimously
-
-Next action:
-
-- add `RRSP_ANNUAL_CAP` constant and apply `Math.min()` in `calculateRrspRoom`
+Fix: commit 4088e1e — `calculateRrspRoom` now caps at `RRSP_2025_CAP = $32,490` via `Math.min()`.
 
 ### 4. 20% payroll penalty description is misleading
 

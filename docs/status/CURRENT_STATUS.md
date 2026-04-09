@@ -1,11 +1,11 @@
 # Current Status
 
-Last updated: April 7, 2026
+Last updated: April 9, 2026
 
 ## Build Status
 
-- `npm run lint`: passing (as of April 7)
-- `npm run build`: passing (as of April 7)
+- `npm run lint`: passing (as of April 9)
+- `npm run build`: passing (as of April 9)
 
 ## Runtime Status
 
@@ -49,8 +49,8 @@ Phase 1 data sourcing system — commit 7987bac on main:
 ## Current Blockers
 
 - **P0: Nova Scotia HST hardcoded as 15%, correct value is 14% since April 2025** — verify at CRA calculator URL then patch `lib/compliance-rules.ts`
-- **P0: Basic Personal Amount (BPA) not applied** — all tax estimates are overstated, fix in `lib/canadian-tax.ts`
-- **P1: RRSP room has no annual dollar cap** — overestimates for income >$180K
+- ~~P0: BPA not applied~~ — FIXED April 9 (commit 4088e1e)
+- ~~P1: RRSP room no annual cap~~ — FIXED April 9 (commit 4088e1e)
 - **P1: 20% payroll penalty described as automatic** — actually requires gross negligence finding
 - **P1: WCB shown for sole proprietors who may be exempt** — display logic gap
 - **P1: 2026 federal brackets published but not in code** — app shows 2025 data
