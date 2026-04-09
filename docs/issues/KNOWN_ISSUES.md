@@ -139,19 +139,21 @@ Next action:
 
 - use [docs/decisions/PRODUCTION_READINESS_SPEC.md](/Users/balajik/projects/Canada_Conttractors/docs/decisions/PRODUCTION_READINESS_SPEC.md) and [docs/decisions/IMPLEMENTATION_MILESTONES.md](/Users/balajik/projects/Canada_Conttractors/docs/decisions/IMPLEMENTATION_MILESTONES.md) after data accuracy issues are resolved
 
-### 10. No data sourcing system exists
+### 10. Data sourcing system Phase 1 built, not yet activated
 
 Severity: medium
 
 Details:
 
-- all compliance/tax data is hardcoded with no freshness tracking, source registry, or automated staleness detection
-- multi-LLM audit (April 4, 2026) confirmed all source data is publicly available at known URLs
-- architectural recommendation documented in `docs/decisions/DATA_SOURCING_AUDIT_SYNTHESIS.md`
+- Phase 1 shipped April 7, 2026 (commit 7987bac)
+- DB tables, API routes, admin UI, and seed script all built and passing lint + build
+- requires `SUPABASE_SERVICE_ROLE_KEY` + `CANSTACK_ADMIN_USER_ID` env vars, schema migration, and seed run to go live
 
 Next action:
 
-- design and build data sourcing system (next session priority)
+- activate Phase 1 (env vars → schema → seed → verify `/en/admin`)
+- Phase 2: `compliance_values` table + propose/approve/publish workflow
+- Phase 3: Vercel Cron for weekly automated checks
 
 ## Resolved
 

@@ -1,12 +1,11 @@
 # Current Status
 
-Last updated: April 4, 2026
+Last updated: April 7, 2026
 
 ## Build Status
 
-- `npm run lint`: passing (as of March 16)
-- `npm run build`: passing (as of March 16)
-- no code changes made this session — research and audit only
+- `npm run lint`: passing (as of April 7)
+- `npm run build`: passing (as of April 7)
 
 ## Runtime Status
 
@@ -27,15 +26,30 @@ Last updated: April 4, 2026
 
 ## Current Focus
 
-- **DATA ACCURACY** — multi-LLM audit completed April 4, 2026. Found P0 bugs in tax and compliance calculations.
-- Design and build a data sourcing system (source registry, freshness tracking, automated checks)
-- Fix P0/P1 bugs identified in the audit before any user-facing launch
-- Complete Phase 1 validation after data accuracy is resolved
+- **Fix P0/P1 data accuracy bugs** — data sourcing system is now built; next step is applying verified fixes
+- Phase 2 of data sourcing system (compliance_values propose/approve/publish workflow)
+- Production launch hardening after data accuracy is resolved
+
+## What Was Built This Session (April 7, 2026)
+
+Phase 1 data sourcing system — commit 7987bac on main:
+- `supabase/schema.sql` — 3 new tables: `data_sources`, `source_snapshots`, `audit_log`
+- `lib/supabase/admin.ts` — service-role client (server-only)
+- `lib/admin-auth.ts` — admin auth guard
+- `app/api/admin/sources/route.ts` — list + add sources
+- `app/api/admin/sources/[id]/check/route.ts` — single source check (SHA-256 hash + audit)
+- `app/api/admin/sources/check-all/route.ts` — batch check all active sources
+- `app/api/admin/audit-log/route.ts` — paginated audit log
+- `app/[locale]/admin/page.tsx` — admin dashboard
+- `app/[locale]/admin/audit/page.tsx` — audit log page
+- `scripts/seed-sources.ts` — 33 authoritative source URLs
+
+**Still needs activation:** set `SUPABASE_SERVICE_ROLE_KEY` + `CANSTACK_ADMIN_USER_ID` in `.env.local`, run schema SQL, run seed script.
 
 ## Current Blockers
 
-- **P0: Nova Scotia HST hardcoded as 15%, likely 14% since April 2025** — needs manual verification at CRA URL
-- **P0: Basic Personal Amount (BPA) not applied** — all tax estimates are overstated
+- **P0: Nova Scotia HST hardcoded as 15%, correct value is 14% since April 2025** — verify at CRA calculator URL then patch `lib/compliance-rules.ts`
+- **P0: Basic Personal Amount (BPA) not applied** — all tax estimates are overstated, fix in `lib/canadian-tax.ts`
 - **P1: RRSP room has no annual dollar cap** — overestimates for income >$180K
 - **P1: 20% payroll penalty described as automatic** — actually requires gross negligence finding
 - **P1: WCB shown for sole proprietors who may be exempt** — display logic gap
