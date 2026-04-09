@@ -19,6 +19,33 @@ export const provinces = [
   { code: "YT", name: "Yukon" },
 ] as const;
 
+// BPA 2025 — non-refundable federal credit (CRA)
+const BPA_2025_FULL = 16129; // full amount for income ≤ $173,205
+const BPA_2025_MIN = 14538; // minimum at income ≥ $253,414
+const BPA_2025_FULL_THRESHOLD = 173205;
+const BPA_2025_MIN_THRESHOLD = 253414;
+const FEDERAL_LOWEST_RATE_2025 = 0.15; // CRA BPA credit rate
+
+// RRSP 2025 — 18% of prior-year earned income, capped at CRA annual limit
+const RRSP_CONTRIBUTION_RATE = 0.18;
+const RRSP_2025_CAP = 32490;
+
+function calculateBpaCredit(income: number): number {
+  let bpa: number;
+  if (income <= BPA_2025_FULL_THRESHOLD) {
+    bpa = BPA_2025_FULL;
+  } else if (income >= BPA_2025_MIN_THRESHOLD) {
+    bpa = BPA_2025_MIN;
+  } else {
+    const phaseoutRange = BPA_2025_MIN_THRESHOLD - BPA_2025_FULL_THRESHOLD;
+    const incomeOver = income - BPA_2025_FULL_THRESHOLD;
+    const reduction =
+      ((BPA_2025_FULL - BPA_2025_MIN) * incomeOver) / phaseoutRange;
+    bpa = BPA_2025_FULL - reduction;
+  }
+  return bpa * FEDERAL_LOWEST_RATE_2025;
+}
+
 const federalBrackets2025: TaxBracket[] = [
   { upTo: 57375, rate: 0.145 },
   { upTo: 114750, rate: 0.205 },
@@ -153,7 +180,9 @@ export function calculateProgressiveTax(income: number, brackets: TaxBracket[]) 
 }
 
 export function calculateCombinedTaxEstimate(income: number, province: string) {
-  const federalTax = calculateProgressiveTax(income, federalBrackets2025);
+  const federalTaxBeforeCredits = calculateProgressiveTax(income, federalBrackets2025);
+  const bpaCredit = calculateBpaCredit(income);
+  const federalTax = Math.max(0, federalTaxBeforeCredits - bpaCredit);
   const provincialTax = calculateProgressiveTax(
     income,
     provincialBrackets2025[province] ?? provincialBrackets2025.ON,
@@ -169,5 +198,8 @@ export function calculateCombinedTaxEstimate(income: number, province: string) {
 }
 
 export function calculateRrspRoom(previousYearIncome: number) {
-  return Math.max(0, previousYearIncome * 0.18);
+  return Math.min(
+    Math.max(0, previousYearIncome * RRSP_CONTRIBUTION_RATE),
+    RRSP_2025_CAP,
+  );
 }
