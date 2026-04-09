@@ -26,13 +26,23 @@ Last updated: April 9, 2026
 
 ## Current Focus
 
-- **Fix P0/P1 data accuracy bugs** — data sourcing system is now built; next step is applying verified fixes
-- Phase 2 of data sourcing system (compliance_values propose/approve/publish workflow)
-- Production launch hardening after data accuracy is resolved
+- **Activate data sourcing Phase 1** — env vars + schema + seed (manual steps, no code needed)
+- **Fix remaining P0** — NS HST (blocked on manual CRA verification)
+- **Phase 2 of data sourcing** — `compliance_values` propose/approve/publish workflow
+- Production launch hardening after data accuracy is fully resolved
 
-## What Was Built This Session (April 7, 2026)
+## What Was Built — April 9, 2026
 
-Phase 1 data sourcing system — commit 7987bac on main:
+5 data accuracy fixes across `lib/canadian-tax.ts`, `lib/compliance-rules.ts`, `components/compliance-dashboard.tsx`:
+
+- commit `4088e1e` — BPA credit applied to federal tax; RRSP room capped
+- commit `5aaaed2` — 20% payroll penalty gross negligence requirement clarified
+- commit `89c0f92` — WCB sole-prop owner coverage disclaimers (BC + AB)
+- commit `4e36a42` — 2026 federal brackets + year-aware tax/RRSP functions
+
+## What Was Built — April 7, 2026
+
+Phase 1 data sourcing system — commit `7987bac`:
 - `supabase/schema.sql` — 3 new tables: `data_sources`, `source_snapshots`, `audit_log`
 - `lib/supabase/admin.ts` — service-role client (server-only)
 - `lib/admin-auth.ts` — admin auth guard
@@ -44,16 +54,10 @@ Phase 1 data sourcing system — commit 7987bac on main:
 - `app/[locale]/admin/audit/page.tsx` — audit log page
 - `scripts/seed-sources.ts` — 33 authoritative source URLs
 
-**Still needs activation:** set `SUPABASE_SERVICE_ROLE_KEY` + `CANSTACK_ADMIN_USER_ID` in `.env.local`, run schema SQL, run seed script.
-
 ## Current Blockers
 
-- **P0: Nova Scotia HST hardcoded as 15%, correct value is 14% since April 2025** — verify at CRA calculator URL then patch `lib/compliance-rules.ts`
-- ~~P0: BPA not applied~~ — FIXED April 9 (commit 4088e1e)
-- ~~P1: RRSP room no annual cap~~ — FIXED April 9 (commit 4088e1e)
-- **P1: 20% payroll penalty described as automatic** — actually requires gross negligence finding
-- **P1: WCB shown for sole proprietors who may be exempt** — display logic gap
-- **P1: 2026 federal brackets published but not in code** — app shows 2025 data
-- some compliance rule entries still contain TODO-style confidence notes
-- audience validation is still qualitative, not instrumented
-- production launch hardening not yet implemented
+- **P0: Nova Scotia HST hardcoded as 15%, correct value is 14% since April 2025** — manually verify at CRA GST/HST calculator URL, then patch `lib/compliance-rules.ts` NS entry (one-line fix once confirmed)
+- **Data sourcing Phase 1 not yet activated** — needs `SUPABASE_SERVICE_ROLE_KEY` + `CANSTACK_ADMIN_USER_ID` in `.env.local`, schema SQL run, seed script run
+- Some compliance entries still contain TODO-style confidence notes (AB WCB stale, BC WCB unverified)
+- Audience validation still qualitative, not instrumented
+- Production launch hardening not yet started

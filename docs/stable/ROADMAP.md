@@ -23,14 +23,18 @@ Phase: Structured MVP with dual workspaces
 
 ## In Progress
 
+- data sourcing Phase 1 activation (env vars + schema + seed — manual step)
+- NS HST verification (manual CRA URL check before one-line patch)
 - audience and UX validation
 - Phase 1 validation checklist execution
 
 ## Pending
 
+- data sourcing Phase 2 — `compliance_values` propose/approve/publish workflow
+- data sourcing Phase 3 — Vercel Cron for weekly automated source checks
 - deeper Supabase persistence workflows
 - subscription-aware feature unlocking
-- compliance data source audit for TODO-marked entries
+- compliance data source audit for TODO-marked entries (AB WCB, BC WCB)
 - richer operator onboarding based on business stage
 - analytics / product validation instrumentation
 - Stripe webhook fulfillment and subscription sync

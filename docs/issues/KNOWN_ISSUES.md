@@ -19,62 +19,25 @@ Next action:
 - manually verify at `canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html`
 - if confirmed, patch `lib/compliance-rules.ts` NS entry
 
-### 2. ~~Basic Personal Amount (BPA) not applied to tax estimates~~ — RESOLVED April 9, 2026
-
-Severity: P0 → resolved
-
-Fix: commit 4088e1e — BPA credit applied in `calculateCombinedTaxEstimate`. Full $16,129 phases out to $14,538 between $173,205–$253,414 income; credit at 15% CRA rate.
-
 ## Open — P1 (Fix Before Launch)
 
-### 3. ~~RRSP room has no annual dollar cap~~ — RESOLVED April 9, 2026
+### 4. ~~20% payroll penalty description is misleading~~ — RESOLVED April 9, 2026
 
 Severity: P1 → resolved
 
-Fix: commit 4088e1e — `calculateRrspRoom` now caps at `RRSP_2025_CAP = $32,490` via `Math.min()`.
+Fix: commit 5aaaed2 — description in `CRA_PAYROLL_PENALTY_SCHEDULE` tier-repeat now explicitly states gross negligence requirement per CRA T4001.
 
-### 4. 20% payroll penalty description is misleading
+### 5. ~~WCB premiums shown for exempt sole proprietors~~ — RESOLVED April 9, 2026
 
-Severity: P1
+Severity: P1 → resolved
 
-Details:
+Fix: commit 89c0f92 — WCB card already gated on `hasEmployees`. Added province-specific disclaimers in `compliance-dashboard.tsx` for BC (owner coverage voluntary) and AB (owner coverage opt-out) sole proprietors.
 
-- `lib/compliance-rules.ts` tier-repeat entry implies 20% is automatic for second offence
-- CRA T4001 says 20% only applies if failure was "knowingly or under circumstances of gross negligence"
-- all 3 LLMs confirmed unanimously
+### 6. ~~2026 federal brackets not in code~~ — RESOLVED April 9, 2026
 
-Next action:
+Severity: P1 → resolved
 
-- update description text in `CRA_PAYROLL_PENALTY_SCHEDULE`
-
-### 5. WCB premiums shown for exempt sole proprietors
-
-Severity: P1
-
-Details:
-
-- compliance dashboard may show WCB obligations to users who are exempt
-- BC: owner coverage voluntary; AB: owner coverage opt-out; ON IT: generally not required without employees
-- all 3 LLMs confirmed ON WSIB IT exemption unanimously
-
-Next action:
-
-- add business structure + employee count to display logic before showing WCB premiums
-
-### 6. 2026 federal brackets not in code
-
-Severity: P1
-
-Details:
-
-- app uses 2025 brackets only
-- 2026 brackets published by CRA (confirmed by all 3 LLMs)
-- first bracket rate changes from 14.5% (blended) to 14% (flat)
-- thresholds shift due to 2.0% indexation
-
-Next action:
-
-- add 2026 bracket table and make tax year selectable or auto-detect
+Fix: commit 4e36a42 — `federalBrackets2026` added with 2.0% indexed thresholds and 14% first bracket rate. BPA and RRSP caps also updated for 2026. `calculateCombinedTaxEstimate` and `calculateRrspRoom` are now year-aware (auto-detect current year, or accept explicit `taxYear` param).
 
 ## Open — Medium (Existing)
 
@@ -138,9 +101,39 @@ Next action:
 
 ## Resolved
 
+### B. Basic Personal Amount (BPA) not applied to tax estimates
+
+Resolved: April 9, 2026 — commit 4088e1e
+
+BPA credit now applied in `calculateCombinedTaxEstimate`. Full $16,129 phases out to $14,538 between $173,205–$253,414 income; credit applied at 15% CRA rate (2025) / 14% (2026).
+
+### C. RRSP room had no annual dollar cap
+
+Resolved: April 9, 2026 — commit 4088e1e
+
+`calculateRrspRoom` now caps at `$32,490` (2025) / `$33,810` (2026) via `Math.min()`.
+
+### D. 20% payroll penalty described as automatic
+
+Resolved: April 9, 2026 — commit 5aaaed2
+
+Description in `CRA_PAYROLL_PENALTY_SCHEDULE` tier-repeat updated to require gross negligence finding per CRA T4001.
+
+### E. WCB premiums shown for exempt sole proprietors
+
+Resolved: April 9, 2026 — commit 89c0f92
+
+WCB card gated on `hasEmployees`. Province-specific disclaimers added for BC (voluntary) and AB (opt-out) sole proprietors.
+
+### F. 2026 federal brackets not in code
+
+Resolved: April 9, 2026 — commit 4e36a42
+
+`federalBrackets2026` added. Tax functions now year-aware, defaulting to current year.
+
 ### A. Stale `.next` runtime causing missing vendor chunk errors
 
-Status: resolved
+Resolved: March 2026
 
 Fix:
 

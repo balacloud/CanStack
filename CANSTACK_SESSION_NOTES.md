@@ -396,3 +396,81 @@ At this point:
 - complete authoritative source registry exists (federal, provincial, WCB)
 - architectural direction for sourcing system is drafted
 - next session scope is clearly defined
+
+---
+
+## Session: April 9, 2026 — Data Accuracy Bug Fixes
+
+### What Happened
+
+Applied 5 of the 6 P0/P1 data accuracy bugs identified in the April 4 audit. One P0 (NS HST) remains blocked on manual CRA verification. All fixes passed lint + build.
+
+### What Was Fixed
+
+**P0 — BPA not applied (commit 4088e1e)**
+- `lib/canadian-tax.ts`: implemented `calculateBpaCredit()` with CRA phaseout logic
+- Full BPA $16,129 (2025) / $16,452 (2026) phases out to minimum over income range
+- Credit applied at 15% (2025) / 14% (2026) federal rate
+- Federal tax estimates were overstated for all income levels before this fix
+
+**P1 — RRSP room uncapped (commit 4088e1e)**
+- `lib/canadian-tax.ts`: `calculateRrspRoom` now caps at `$32,490` (2025) / `$33,810` (2026)
+- Was overestimating for any income above $180,500
+
+**P1 — 20% payroll penalty wording (commit 5aaaed2)**
+- `lib/compliance-rules.ts`: tier-repeat description updated
+- Now explicitly states gross negligence requirement per CRA T4001
+- Previous wording implied the 20% rate was automatic
+
+**P1 — WCB sole-prop exemptions (commit 89c0f92)**
+- `components/compliance-dashboard.tsx`: province-specific disclaimers added
+- BC: owner coverage is voluntary — note shown for sole-prop + BC + hasEmployees
+- AB: owner coverage is opt-out — note shown for sole-prop + AB + hasEmployees
+- Card remains fully hidden when `hasEmployees = false` (existing gate)
+
+**P1 — 2026 federal brackets (commit 4e36a42)**
+- `lib/canadian-tax.ts`: `federalBrackets2026` added with 2.0% indexed thresholds
+- First bracket rate drops from 14.5% to 14% per CRA 2026 schedule
+- `calculateCombinedTaxEstimate` and `calculateRrspRoom` now accept optional `taxYear` param, defaulting to `new Date().getFullYear()`
+- BPA constants added for 2026 ($16,452 / $14,829, thresholds $176,669–$258,482)
+- RRSP 2026 cap: $33,810
+
+### What Was Not Fixed
+
+**P0 — Nova Scotia HST (still 15% in code, should be 14%)**
+- Blocked on manual verification at CRA GST/HST calculator URL
+- Do not patch without manual confirmation — only Perplexity caught this; ChatGPT and Gemini did not
+- One-line fix in `lib/compliance-rules.ts` NS entry once confirmed
+
+### Supabase Action Items (your manual steps)
+
+Data sourcing Phase 1 is built but not yet activated. To activate:
+
+1. Add to `.env.local`:
+   - `SUPABASE_SERVICE_ROLE_KEY` — from Supabase dashboard → Settings → API
+   - `CANSTACK_ADMIN_USER_ID` — your Supabase auth user UUID
+2. Run `supabase/schema.sql` in Supabase SQL editor (creates `data_sources`, `source_snapshots`, `audit_log`)
+3. Run `npx ts-node scripts/seed-sources.ts` to seed 33 source URLs
+4. Verify at `http://localhost:3100/en/admin`
+
+### No Contract Changes
+
+No API route signatures, response shapes, or Supabase schema were changed this session.
+
+### Next Session Priority
+
+1. NS HST — you verify at CRA URL, then one-line patch
+2. Activate data sourcing Phase 1 (your manual steps above)
+3. Phase 2 data sourcing — `compliance_values` propose/approve/publish workflow
+4. Production launch hardening
+
+## Session Close (April 9, 2026)
+
+At this point:
+
+- 5 of 6 P0/P1 data accuracy bugs fixed and committed
+- tax estimates now include BPA credit, 2026 brackets, and RRSP cap
+- compliance copy is accurate (payroll penalty, WCB disclaimers)
+- data sourcing Phase 1 built and waiting on activation (env vars + schema + seed)
+- only remaining code blocker is NS HST — manual CRA verification needed before patch
+- lint and build passing
