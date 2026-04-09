@@ -130,7 +130,7 @@ export const CRA_PAYROLL_PENALTY_SCHEDULE = [
     daysMax: Infinity,
     rate: 0.20,
     description:
-      "20% — only applies if CRA issued a penalty earlier in the same calendar year",
+      "20% — only if a penalty was issued earlier in the same calendar year AND CRA determines the failure was made knowingly or under circumstances of gross negligence (per CRA T4001)",
     source: "CRA T4001",
   },
 ] as const;
