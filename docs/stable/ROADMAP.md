@@ -9,7 +9,7 @@ Phase: Structured MVP with dual workspaces
 - Next.js 14 App Router scaffold
 - bilingual routing
 - benefits/planning workspace
-- tax estimator
+- tax estimator (2025 + 2026 brackets, BPA credit, RRSP cap)
 - RRSP calculator
 - recommendation engine
 - Stripe pricing and checkout route
@@ -20,13 +20,14 @@ Phase: Structured MVP with dual workspaces
 - dev lifecycle scripts for clean start/stop/status
 - project documentation system
 - structured planning and production-readiness docs
+- all P0/P1 data accuracy bugs fixed (BPA, RRSP cap, NS HST, 2026 brackets, payroll penalty, WCB)
+- data sourcing Phase 1 — source monitor admin dashboard live at `/en/admin`
 
 ## In Progress
 
-- data sourcing Phase 1 activation (env vars + schema + seed — manual step)
-- NS HST verification (manual CRA URL check before one-line patch)
 - audience and UX validation
 - Phase 1 validation checklist execution
+- WCB source URL verification in admin dashboard
 
 ## Pending
 

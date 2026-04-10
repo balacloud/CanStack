@@ -14,7 +14,7 @@ export default async function AdminPage({
   const auth = await checkAdminAuth();
 
   if (!auth.authorized) {
-    redirect(`/${locale}`);
+    redirect(`/${locale}/admin/login`);
   }
 
   const db = createAdminClient();

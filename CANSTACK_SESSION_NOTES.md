@@ -474,3 +474,54 @@ At this point:
 - data sourcing Phase 1 built and waiting on activation (env vars + schema + seed)
 - only remaining code blocker is NS HST — manual CRA verification needed before patch
 - lint and build passing
+
+---
+
+## Session: April 10, 2026 — Supabase Activation + Final P0 Fix
+
+### What Happened
+
+Activated the data sourcing Phase 1 system end-to-end and closed the last remaining P0 bug (NS HST). All P0/P1 data accuracy bugs are now resolved.
+
+### What Was Built / Activated
+
+**Admin login page**
+- `app/[locale]/admin/login/page.tsx` — email + password login using Supabase `signInWithPassword`
+- `app/[locale]/admin/page.tsx` — unauthorized redirect now goes to `/admin/login` instead of homepage
+
+**Supabase activation (manual steps completed)**
+- `dotenv` installed as dev dependency (`package.json`)
+- Schema SQL run against Supabase project — all 8 tables confirmed
+- 32 sources seeded via `npx tsx scripts/seed-sources.ts`
+- `.env.local` updated with `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `CANSTACK_ADMIN_USER_ID`
+- Admin dashboard live and accessible at `http://localhost:3100/en/admin`
+
+**P0 — NS HST patched (commit 498a5d8)**
+- `lib/compliance-rules.ts`: NS HST corrected from `0.15` to `0.14`
+- Manually verified by user at CRA GST/HST calculator — effective April 1, 2025
+- This was the last remaining P0 bug
+
+**Seed URL cleanup (commit 498a5d8)**
+- 7 year-specific deep-link URLs replaced with stable parent pages
+- Affected: `ab-wcb`, `bc-wcb`, `sk-wcb`, `on-wsib`, `ns-wcb`, `ns-income-tax`, `qc-income-tax`
+- Root cause: year-specific WCB pages (e.g. `/2026-rates`) 404 after the year rolls over
+
+### No Contract Changes
+
+No API route signatures or Supabase schema changed this session.
+
+### Next Session Priority
+
+1. Data sourcing Phase 2 — `compliance_values` table + propose/approve/publish workflow
+2. Production launch hardening — error boundaries, security headers, Stripe webhook fulfillment
+3. Audience validation — run UX evaluation template on live product
+
+## Session Close (April 10, 2026)
+
+At this point:
+
+- **all P0/P1 data accuracy bugs resolved** — product is data-accurate for the first time
+- data sourcing Phase 1 fully live — admin dashboard at `/en/admin`, 32 sources monitored
+- admin login working end-to-end
+- lint and build passing
+- next focus is Phase 2 data sourcing and production launch hardening

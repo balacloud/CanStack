@@ -2,22 +2,7 @@
 
 ## Open — P0 (Critical, Fix Before Launch)
 
-### 1. Nova Scotia HST likely wrong (15% → 14%)
-
-Severity: P0
-
-Details:
-
-- our code has NS HST at 0.15 (15%) in `lib/compliance-rules.ts`
-- Perplexity audit (April 4, 2026) found NS HST dropped to 14% effective April 1, 2025
-- CRA GST/HST calculator page cited as source with direct quote
-- ChatGPT and Gemini did NOT catch this change (listed 15%)
-- **requires manual verification at CRA calculator URL before patching**
-
-Next action:
-
-- manually verify at `canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html`
-- if confirmed, patch `lib/compliance-rules.ts` NS entry
+*No open P0 bugs. All resolved.*
 
 ## Open — P1 (Fix Before Launch)
 
@@ -130,6 +115,18 @@ WCB card gated on `hasEmployees`. Province-specific disclaimers added for BC (vo
 Resolved: April 9, 2026 — commit 4e36a42
 
 `federalBrackets2026` added. Tax functions now year-aware, defaulting to current year.
+
+### G. Nova Scotia HST hardcoded at 15% (should be 14%)
+
+Resolved: April 10, 2026 — commit 498a5d8
+
+Manually verified at CRA GST/HST calculator. NS HST reduced from 15% to 14% effective April 1, 2025. Patched `lib/compliance-rules.ts` NS entry.
+
+### H. Data sourcing Phase 1 not activated
+
+Resolved: April 10, 2026
+
+Supabase schema migrated, 32 sources seeded, admin login page built, env vars configured. Admin dashboard live at `/en/admin`.
 
 ### A. Stale `.next` runtime causing missing vendor chunk errors
 

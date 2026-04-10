@@ -1,11 +1,11 @@
 # Current Status
 
-Last updated: April 9, 2026
+Last updated: April 10, 2026
 
 ## Build Status
 
-- `npm run lint`: passing (as of April 9)
-- `npm run build`: passing (as of April 9)
+- `npm run lint`: passing (as of April 10)
+- `npm run build`: passing (as of April 10)
 
 ## Runtime Status
 
@@ -26,10 +26,21 @@ Last updated: April 9, 2026
 
 ## Current Focus
 
-- **Activate data sourcing Phase 1** — env vars + schema + seed (manual steps, no code needed)
-- **Fix remaining P0** — NS HST (blocked on manual CRA verification)
+- **All P0/P1 data accuracy bugs resolved** — product is now data-accurate
 - **Phase 2 of data sourcing** — `compliance_values` propose/approve/publish workflow
-- Production launch hardening after data accuracy is fully resolved
+- Production launch hardening (error boundaries, security headers, Stripe webhooks)
+- Audience validation and Phase 1 checklist execution
+
+## What Was Built — April 10, 2026
+
+Supabase activation + final P0 fix:
+
+- `app/[locale]/admin/login/page.tsx` — admin login page (email + password)
+- `app/[locale]/admin/page.tsx` — redirect changed from homepage to `/admin/login` on unauth
+- `lib/compliance-rules.ts` — NS HST patched 0.15 → 0.14 (commit 498a5d8)
+- `scripts/seed-sources.ts` — 7 year-specific WCB/provincial URLs updated to stable parent pages
+- `package.json` — `dotenv` added as dev dependency
+- Supabase: schema migrated, 32 sources seeded, admin dashboard live at `/en/admin`
 
 ## What Was Built — April 9, 2026
 
@@ -56,8 +67,7 @@ Phase 1 data sourcing system — commit `7987bac`:
 
 ## Current Blockers
 
-- **P0: Nova Scotia HST hardcoded as 15%, correct value is 14% since April 2025** — manually verify at CRA GST/HST calculator URL, then patch `lib/compliance-rules.ts` NS entry (one-line fix once confirmed)
-- **Data sourcing Phase 1 not yet activated** — needs `SUPABASE_SERVICE_ROLE_KEY` + `CANSTACK_ADMIN_USER_ID` in `.env.local`, schema SQL run, seed script run
+- Some WCB source URLs still returning errors in admin dashboard — stable parent URLs now seeded, re-check needed
 - Some compliance entries still contain TODO-style confidence notes (AB WCB stale, BC WCB unverified)
 - Audience validation still qualitative, not instrumented
-- Production launch hardening not yet started
+- Production launch hardening not yet started (error boundaries, security headers, Stripe webhooks)
