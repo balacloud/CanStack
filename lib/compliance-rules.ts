@@ -143,7 +143,7 @@ export const PROVINCIAL_SALES_TAX_RATES: Readonly<
   MB: { gst: 0.05, pst: 0.07 },
   NB: { gst: 0.05, hst: 0.15 },
   NL: { gst: 0.05, hst: 0.15 },
-  NS: { gst: 0.05, hst: 0.15 },
+  NS: { gst: 0.05, hst: 0.14 }, // reduced from 15% to 14% effective April 1, 2025 (CRA confirmed)
   NT: { gst: 0.05 },
   NU: { gst: 0.05 },
   ON: { gst: 0.05, hst: 0.13 },
