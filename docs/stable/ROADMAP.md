@@ -31,8 +31,8 @@ Phase: Structured MVP with dual workspaces
 
 ## Pending
 
-- data sourcing Phase 2 — `compliance_values` propose/approve/publish workflow
-- data sourcing Phase 3 — Vercel Cron for weekly automated source checks
+- data sourcing Phase 2 — `compliance_values` table + propose/approve/publish workflow in admin dashboard
+- data sourcing Phase 3 — replace Vercel Cron with Claude Managed Agent session for automated weekly source checks, hash diffing, and compliance value change proposals (requires Phase 2 complete; Anthropic Managed Agents API in beta as of April 2026)
 - deeper Supabase persistence workflows
 - subscription-aware feature unlocking
 - compliance data source audit for TODO-marked entries (AB WCB, BC WCB)
