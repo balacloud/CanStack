@@ -1,6 +1,6 @@
 # Current Status
 
-Last updated: April 10, 2026
+Last updated: April 11, 2026
 
 ## Build Status
 
@@ -30,6 +30,14 @@ Last updated: April 10, 2026
 - **Phase 2 of data sourcing** — `compliance_values` propose/approve/publish workflow
 - Production launch hardening (error boundaries, security headers, Stripe webhooks)
 - Audience validation and Phase 1 checklist execution
+
+## What Was Built — April 11, 2026
+
+Tooling and roadmap session — no code changes:
+
+- `.claude/skills/canstack-start.md` — `/canstack-start` session startup skill (commit 5486a53)
+- `.claude/skills/canstack-close.md` — `/canstack-close` session close skill (commit 5486a53)
+- `docs/stable/ROADMAP.md` — Phase 3 updated to use Claude Managed Agents instead of plain Vercel Cron (commit c97240a)
 
 ## What Was Built — April 10, 2026
 

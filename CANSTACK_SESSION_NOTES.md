@@ -525,3 +525,44 @@ At this point:
 - admin login working end-to-end
 - lint and build passing
 - next focus is Phase 2 data sourcing and production launch hardening
+
+---
+
+## Session: April 11, 2026 — Skills + Managed Agents Roadmap
+
+### What Happened
+
+Short tooling session. No code or schema changes.
+
+### What Was Built
+
+**Session skills (commit 5486a53)**
+- `.claude/skills/canstack-start.md` — invoke with `/canstack-start` to auto-run the full session startup protocol
+- `.claude/skills/canstack-close.md` — invoke with `/canstack-close` to auto-run the full session close protocol
+- Both replace the need to manually say "start/close the session following the protocol"
+- Note: skills activate after Claude Code restart
+
+**Roadmap update (commit c97240a)**
+- Phase 3 data sourcing updated: Vercel Cron replaced with Claude Managed Agents API
+- Agent will handle weekly URL fetches, SHA-256 hash diffs, and propose compliance value changes for admin approval
+- Depends on Phase 2 (`compliance_values` table) being complete first
+- Managed Agents API is in beta as of April 2026 (`anthropic-beta: managed-agents-2026-04-01`)
+
+### No Contract or Schema Changes
+
+Nothing changed in routes, API shapes, or Supabase schema.
+
+### Next Session Priority
+
+1. Data sourcing Phase 2 — design and build `compliance_values` table + propose/approve/publish workflow
+2. Production launch hardening — error boundaries, security headers, Stripe webhooks
+3. Audience validation — run UX evaluation template
+
+## Session Close (April 11, 2026)
+
+At this point:
+
+- session start/close skills created and committed
+- Phase 3 roadmap updated to target Claude Managed Agents
+- no code changes, build status unchanged from April 10
+- working tree clean
