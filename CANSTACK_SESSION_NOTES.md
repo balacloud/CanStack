@@ -1,6 +1,6 @@
 # CanStack Session Notes
 
-Last updated: March 16, 2026
+Last updated: July 30, 2026
 
 ## Summary
 
@@ -10,6 +10,36 @@ This workspace now contains a production-style Next.js 14 application for Canadi
 - Deadlines & Compliance
 
 The app has been repositioned from a benefits-only dashboard into a broader contractor operations product. The homepage, navigation, and workspace structure were redesigned so the product now reads as one SaaS product serving different operator maturity stages.
+
+## Session Entry — July 30, 2026
+
+What happened:
+
+- Converted the Claude startup workflow into a gamified mission briefing while preserving the CanStack startup protocol.
+- Installed global Codex skills for `$canstack-start` and `$canstack-close`.
+- Validated both Codex skills with the skill validator.
+- Ran session verification: `npm run lint` and `npm run build` both passed.
+
+What was built:
+
+- `.claude/skills/canstack-start.md` now outputs a structured mission briefing with readiness score, main quest, side quests, hazards, power-ups, audit gate, and start line.
+- `/Users/balajik/.codex/skills/canstack-start/SKILL.md` provides the same startup briefing workflow for Codex.
+- `/Users/balajik/.codex/skills/canstack-close/SKILL.md` provides an end-of-run close workflow for Codex with verification, documentation, commit rules, and next-session priorities.
+
+What was not done:
+
+- No product code, API routes, Supabase schema, compliance logic, or UX surface was changed.
+- No known issue was resolved or added.
+
+Next session priorities:
+
+1. Run Phase 1 UX validation using `UX_EVALUATION_TEMPLATE.md`.
+2. Verify TODO-marked compliance entries against official 2026 sources, especially AB WCB and BC WCB.
+3. Re-check admin dashboard WCB source URLs after stable parent URL seeding.
+
+Session Close:
+
+The session created reusable Codex and Claude startup/close workflow tooling without changing product behavior. The product remains in the same Structured MVP phase, with validation and compliance-source hardening as the next practical work.
 
 ## What Was Implemented
 
