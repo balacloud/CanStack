@@ -19,6 +19,9 @@
 # misc
 .DS_Store
 *.pem
+
+# raw private chat exports - contains third-party personal data, never commit
+docs/*.zip
 .runtime/
 .next_stale_*
 

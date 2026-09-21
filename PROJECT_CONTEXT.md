@@ -1,5 +1,9 @@
 # Project Context
 
+## Corporate Structure (added 2026-09-21)
+
+"CanStack" is the user's planned parent/legal incorporation entity, not necessarily this product's customer-facing brand name. This repo holds one product under that umbrella — the contractor compliance/tax SaaS described below. Other planned sibling products (personal finance/investing education, an insurance aggregator) are separate apps/brands under the same umbrella — see `docs/stable/ROADMAP.md` ("Corporate Structure — CanStack as Umbrella Org"). This product's own customer-facing brand name (whether it stays "CanStack" or becomes something else) is an open decision, not yet made.
+
 ## Current Product
 
 CanStack is a Canadian contractor operating platform for self-employed users who need:
