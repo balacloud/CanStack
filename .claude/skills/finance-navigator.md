@@ -18,6 +18,8 @@ All facts (contribution limits, tax brackets, program rules) must trace to tier-
 
 **Reuse existing infrastructure**: CanStack already built a source-monitoring system for compliance data (Phase 1 — `data_sources`/`source_snapshots`/`audit_log` tables, hash-diff checks, admin dashboard at `/en/admin`). The same backbone should track these finance-education sources too, rather than building a second ad hoc system — one source-of-truth pipeline serving multiple content verticals.
 
+**Verify proactively, before publishing — never wait for the user to catch an error (locked 2026-09-22, from a real incident).** A day-2 TFSA draft stated newcomers only start earning contribution room "once they're a resident" without checking what that actually requires — implying a fixed waiting period that doesn't exist. The user caught it; that should have been caught before the draft was ever shown. Every specific factual or legal claim — not just numbers that change yearly — must be checked against a tier-1 source before it goes in a draft, including claims that merely *sound* plausible or match common assumptions (e.g. an assumed day-count residency rule). If a claim can't be verified, either drop it from the draft or explicitly mark it "unverified" in the draft's source notes — never present an unverified inference as settled fact and never rely on the user to catch it after the fact.
+
 ## Content format patterns (from competitor research, 2026-09-21)
 
 Reference material: `docs/reference/canadianinatshirt-tfsa-transcripts.txt` — YouTube transcripts from "Canadian in a T-Shirt" (Adrian, 212K subscribers). **Study structure and topic demand only — never reuse his phrasing, scripts, or copyrighted text.** Reusable patterns:
