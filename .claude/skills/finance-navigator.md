@@ -69,7 +69,14 @@ Prioritize these first, since they recur across years without ever getting a cle
 4. Dividend basics: ex-dividend date, record date, why the price drops
 5. Choosing between all-in-one ETFs (XEQT / VEQT / VGRO) by risk profile
 6. RRSP Home Buyers' Plan (HBP) rules and repayment
-7. How different investment income (dividends, distributions/REITs, capital gains, interest) is taxed outside a registered account — the comparison deliberately left out of the TFSA series' REIT post
+7. How different investment income is taxed outside a registered account, and why that determines what belongs in a TFSA — the comparison deliberately left out of the TFSA series' REIT post, worked out in full during a 2026-09-22 Q&A:
+   - **Core mechanism**: the TFSA's relative benefit for any asset depends on how well that asset is already taxed *outside* a registered account. The worse the outside treatment, the bigger the TFSA win.
+   - **Canadian eligible dividends** (bank stocks, telecoms, etc.): already get a dividend tax credit outside, taxed at a discount vs. regular income — so TFSA still helps, but the improvement is smaller.
+   - **REIT distributions**: usually don't qualify as eligible dividends (mix of rental income/capital gains/return of capital), taxed at full marginal rate outside like a paycheque — no discount, so sheltering them in a TFSA saves the most relative tax. This is why REITs get singled out over regular dividend stocks.
+   - **Capital-gains-focused growth investments**: already taxed at only half rate outside (50% inclusion), so the smallest relative TFSA win, though still fully free inside.
+   - **US dividend payers (stocks or ETFs) are the worst TFSA fit, not a good one**: the 15% US withholding tax applies even inside a TFSA (only RRSP/RRIF/LIRA are treaty-exempt) — so a US-domiciled dividend ETF specifically loses TFSA room AND still loses 15% to the IRS. Verified example: DGRO (iShares Core Dividend Growth ETF) trades on NYSE Arca and holds US companies — confirmed via search 2026-09-22 — making it a case study for "why not this in a TFSA," better suited to an RRSP instead.
+   - **Ranking by relative TFSA benefit** (highest to lowest): REITs / regular-income-taxed assets → Canadian eligible dividends → capital-gains-focused growth → (worst fit) US dividend payers.
+   - **Example ETFs by category, for illustration only per guardrail #1 — never framed as a recommendation**: Canadian REIT ETFs (XRE, ZRE — both TSX-listed, verified Canadian-domiciled 2026-09-22); Canadian dividend ETFs (XDIV, VDY, ZDV — TSX-listed); broad all-in-one (XEQT, VEQT, already referenced elsewhere).
 8. Day trading inside a registered account (TFSA/RRSP) — CRA can deregister the account and tax all its income as a business if trading frequency looks professional; spun out from the TFSA series' day 4 per feedback
 
 ## Daily WhatsApp Content Series (built 2026-09-21)
