@@ -91,14 +91,15 @@ A recurring content pipeline for the user's existing WhatsApp group, as pre-prod
 - Humble, practical framing ("here's what I found," "worth checking yourself") over authoritative pronouncements
 - Never carry forward specific stock/ticker picks from the user's own past messages — guardrail #4 above still applies even to the user's own voice sample
 
-**TFSA series — first backlog item, 5 posts:**
-1. What a TFSA actually is (kill the "savings account" misconception — it's an investing wrapper, not a bank product)
-2. How much room you have by age/residency (the CRA table — cumulative $109,000 as of 2026 for anyone 18+ since 2009; $7,000/year current annual limit; newcomers only accrue room from the year they become Canadian residents)
-3. Contribution/withdrawal mechanics — the withdraw-then-recontribute trap, and the 1%/month over-contribution penalty
-4. What belongs in a TFSA vs. not, in general terms only (stable, established investments vs. speculative ones — no ticker names, per guardrail #1)
-5. The US-dividend withholding tax gotcha (15% withheld even inside a TFSA; only registered retirement accounts are treaty-exempt) + teaser bridging into the next series (RRSP)
+**TFSA series — COMPLETE, 4 posts (2026-09-21/22):**
+1. What a TFSA actually is (kill the "savings account" misconception — it's an investing wrapper, not a bank product; contributions are after-tax dollars, unlike RRSP)
+2. How much room you have by age/residency (the CRA table — cumulative $109,000 as of 2026 for anyone 18+ since 2009; $7,000/year current annual limit; newcomers accrue room from the day they become a tax resident — no fixed waiting period)
+3. Contribution/withdrawal mechanics — the withdraw-then-recontribute trap, the 1%/month over-contribution penalty, and the right way to move institutions (a direct transfer, never withdraw-and-redeposit)
+4. Combined wrap-up: what belongs in a TFSA vs. not (REITs get the biggest relative tax benefit from being sheltered, since their distributions don't qualify for the dividend tax credit; growth stocks benefit less, since capital gains are already taxed at half-rate outside); the US-dividend withholding tax gotcha (15% withheld even inside a TFSA, capital gains still 100% free, only RRSP/RRIF/LIRA are treaty-exempt); TFSA successor holder (spouse — account continues, no tax event) vs. designated beneficiary (anyone else — value at death is tax-free, but post-death earnings before payout are taxable); hidden gems (multiple TFSA accounts across institutions are fine, only total contributions count against room; day trading risk — CRA can deregister a TFSA and tax all its income as a business)
 
-After the TFSA series, pull the next topic from the Content Backlog below in the same 5-post pattern.
+Originally planned as 5 posts, briefly considered splitting further into 6, then finalized as 4 — day 4 absorbed what would've been separate posts once the topics were fully researched and turned out to fit together as one coherent "what to hold and what happens later" wrap-up.
+
+After the TFSA series, pull the next topic from the Content Backlog below in the same day-by-day pattern (day count doesn't have to be 5 — let the topic's natural shape decide, as TFSA did).
 
 **Output location**: `docs/content-drafts/whatsapp-tfsa/day-NN.md`, one file per post. Track series progress in `docs/content-drafts/whatsapp-tfsa/PROGRESS.md` (current day index, current series, last-run date) — the daily routine reads this file first to know what to write next, then updates it.
 
