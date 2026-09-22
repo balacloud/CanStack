@@ -1,6 +1,6 @@
 # CanStack Session Notes
 
-Last updated: September 3, 2026
+Last updated: September 22, 2026
 
 ## Summary
 
@@ -10,6 +10,49 @@ This workspace now contains a production-style Next.js 14 application for Canadi
 - Deadlines & Compliance
 
 The app has been repositioned from a benefits-only dashboard into a broader contractor operations product. The homepage, navigation, and workspace structure were redesigned so the product now reads as one SaaS product serving different operator maturity stages.
+
+As of September 21, 2026, CanStack is also the name of a broader parent/legal umbrella org the user plans to incorporate under — this repo's contractor product is one of three planned products underneath it (see `docs/stable/ROADMAP.md` "Corporate Structure"). The other two (a personal finance education product, and a future licensed insurance aggregator) are separate future products/repos, not part of this codebase.
+
+## Session Entry — September 21-22, 2026
+
+What happened:
+
+- Ran the session startup protocol; confirmed clean state from the September 3 session.
+- Researched investingforcanadians.ca (a competitor reference) and digested a 9,500+ line WhatsApp chat export (the user's own "Stocks/Investments Info" investing community, 5+ years of history) to seed content ideas for a personal-finance-education thread.
+- Decided, then revised same-day: the finance-education idea started as a proposed third workspace inside this repo's app, then was correctly reframed as a separate product under a parent/legal umbrella org named CanStack (Gap Inc model) — `PROJECT_CONTEXT.md`, `docs/stable/ROADMAP.md`, and `docs/stable/GOLDEN_RULES.md` updated to reflect the final structure.
+- Built `.claude/skills/finance-navigator.md` — the persona/guardrail skill for the finance-education product. Locked: education-only (no ticker-specific advice), a tier-1 source-of-truth policy, and (added after a real caught mistake) a rule to verify every specific factual claim proactively, before showing a draft, not after.
+- Drafted, fact-checked, revised per feedback, and confirmed posted: a 4-part TFSA WhatsApp content series (`docs/content-drafts/whatsapp-tfsa/`) — what a TFSA is, contribution room with worked family examples, the withdrawal trap, and REITs/US withholding tax/successor-vs-beneficiary rules (cited verbatim from CRA).
+- Built two Claude Artifacts illustrating the family room comparison and the withdrawal trap timeline (private, not part of this repo).
+- Set up a daily scheduled cloud routine to auto-draft the next WhatsApp post each morning, using the same skill and fact-checking rules.
+- Caught and excluded a raw WhatsApp chat export from git (third-party personal data) by updating `.gitignore`.
+- Re-verified `npm run lint` and `npm run build` still pass (no app code was touched this session).
+
+What was built:
+
+- No product code, API routes, Supabase schema, compliance logic, or UX surface changed in this repo.
+- `PROJECT_CONTEXT.md`, `docs/stable/ROADMAP.md`, `docs/stable/GOLDEN_RULES.md` updated with the umbrella-org corporate structure.
+- `.claude/skills/finance-navigator.md` created and iterated on extensively (source-of-truth policy, content backlog with 8 topics, voice guide, fact-checking rule).
+- `docs/content-drafts/whatsapp-tfsa/` — 4 posted WhatsApp drafts plus a combined recap, all with verified CRA sourcing in the file headers.
+- `docs/reference/canadianinatshirt-tfsa-transcripts.txt` filed as competitor research reference.
+- `.gitignore` updated.
+- `docs/status/CURRENT_STATUS.md` updated with this session's summary.
+
+What was not done:
+
+- No RRSP content drafted yet — it's next in the queue, same process.
+- No actual scaffolding/repo created for the finance-education product itself — still content-only, pre-product.
+- Backlog topics #7 (REIT-vs-dividend tax mechanism, fully fleshed out) and #8 (day trading) are written but not yet turned into posts.
+- The finance-education product's own customer-facing brand name, and whether this repo's contractor product keeps "CanStack" as its own customer-facing name, both remain open decisions.
+
+Next session priorities:
+
+1. Start the RRSP WhatsApp content series (backlog item, same process as TFSA).
+2. Continue Phase 1 validation work on the actual compliance/tax product (unrelated to this session, still pending from before).
+3. If the finance-education product moves toward real scaffolding: create it as a separate project directory/repo, per `.claude/skills/finance-navigator.md`'s "Relationship to CanStack" section — not inside this repo.
+
+Session Close:
+
+This was a content/structure session, not a compliance-app session — no build or product-code risk introduced. The umbrella-org decision is a meaningful, durable change to how this whole workspace should be understood going forward, even though it didn't touch a single line of app code.
 
 ## Session Entry — September 3, 2026
 

@@ -1,11 +1,12 @@
 # Current Status
 
-Last updated: September 3, 2026
+Last updated: September 22, 2026
 
 ## Build Status
 
-- `npm run lint`: passing (as of September 3)
-- `npm run build`: passing (as of September 3)
+- `npm run lint`: passing (verified September 22)
+- `npm run build`: passing (verified September 22)
+- No app code changed this session — verification-only re-check after docs/content/skill work
 
 ## Runtime Status
 
@@ -26,10 +27,24 @@ Last updated: September 3, 2026
 
 ## Current Focus
 
+- **CanStack is now the parent/legal umbrella org** (decided 2026-09-21) — this repo is one of three planned products underneath it, not the whole company
 - **All P0/P1 data accuracy bugs resolved** — product is now data-accurate
 - **Phase 2 of data sourcing** — `compliance_values` propose/approve/publish workflow
 - Production launch hardening (error boundaries, security headers, Stripe webhooks)
 - Audience validation and Phase 1 checklist execution
+- Sibling finance-education product (separate future repo) is actively producing content — see `docs/content-drafts/` and `.claude/skills/finance-navigator.md`; does not affect this repo's own build or roadmap directly
+
+## What Was Built — September 21-22, 2026
+
+Corporate structure and finance-education thread session — no compliance/tax app code changed:
+
+- **CanStack established as parent/legal umbrella org** (Gap Inc model) — this repo's contractor compliance/tax product is one of three planned products underneath it, alongside a personal finance education product and a future insurance aggregator. `PROJECT_CONTEXT.md`, `docs/stable/ROADMAP.md`, and `docs/stable/GOLDEN_RULES.md` all updated to reflect this.
+- **New skill `.claude/skills/finance-navigator.md`** built and iterated on — gatekeeps the finance-education product: education-only guardrail (no ticker-specific advice), tier-1 source-of-truth policy (CRA/canada.ca, GetSmarterAboutMoney.ca, etc.), and a proactive fact-checking rule added after a real caught error (an incorrect newcomer-residency claim).
+- **TFSA content series completed and posted**: 4 WhatsApp posts covering what a TFSA is, contribution room, the withdrawal trap, and REITs/US withholding tax/successor-beneficiary rules — all in `docs/content-drafts/whatsapp-tfsa/`, all facts verified against CRA before posting.
+- **Two interactive artifacts built** illustrating TFSA room by household and the withdrawal trap timeline (private Claude Artifacts, not part of this repo's codebase).
+- **Daily cloud routine created** (`RemoteTrigger`) to auto-draft the next WhatsApp post each morning, following the same skill and fact-checking rules.
+- `.gitignore` updated to exclude a raw WhatsApp chat export (third-party personal data) that was briefly at risk of being committed.
+- `npm run lint` and `npm run build` re-verified passing (no code changed, verification only).
 
 ## What Was Built — September 3, 2026
 
