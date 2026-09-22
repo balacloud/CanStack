@@ -69,6 +69,8 @@ Prioritize these first, since they recur across years without ever getting a cle
 4. Dividend basics: ex-dividend date, record date, why the price drops
 5. Choosing between all-in-one ETFs (XEQT / VEQT / VGRO) by risk profile
 6. RRSP Home Buyers' Plan (HBP) rules and repayment
+7. How different investment income (dividends, distributions/REITs, capital gains, interest) is taxed outside a registered account — the comparison deliberately left out of the TFSA series' REIT post
+8. Day trading inside a registered account (TFSA/RRSP) — CRA can deregister the account and tax all its income as a business if trading frequency looks professional; spun out from the TFSA series' day 4 per feedback
 
 ## Daily WhatsApp Content Series (built 2026-09-21)
 
@@ -91,13 +93,13 @@ A recurring content pipeline for the user's existing WhatsApp group, as pre-prod
 - Humble, practical framing ("here's what I found," "worth checking yourself") over authoritative pronouncements
 - Never carry forward specific stock/ticker picks from the user's own past messages — guardrail #4 above still applies even to the user's own voice sample
 
-**TFSA series — COMPLETE, 4 posts (2026-09-21/22):**
+**TFSA series — COMPLETE, 4 posts (2026-09-21/22, day 4 revised same day per feedback):**
 1. What a TFSA actually is (kill the "savings account" misconception — it's an investing wrapper, not a bank product; contributions are after-tax dollars, unlike RRSP)
 2. How much room you have by age/residency (the CRA table — cumulative $109,000 as of 2026 for anyone 18+ since 2009; $7,000/year current annual limit; newcomers accrue room from the day they become a tax resident — no fixed waiting period)
 3. Contribution/withdrawal mechanics — the withdraw-then-recontribute trap, the 1%/month over-contribution penalty, and the right way to move institutions (a direct transfer, never withdraw-and-redeposit)
-4. Combined wrap-up: what belongs in a TFSA vs. not (REITs get the biggest relative tax benefit from being sheltered, since their distributions don't qualify for the dividend tax credit; growth stocks benefit less, since capital gains are already taxed at half-rate outside); the US-dividend withholding tax gotcha (15% withheld even inside a TFSA, capital gains still 100% free, only RRSP/RRIF/LIRA are treaty-exempt); TFSA successor holder (spouse — account continues, no tax event) vs. designated beneficiary (anyone else — value at death is tax-free, but post-death earnings before payout are taxable); hidden gems (multiple TFSA accounts across institutions are fine, only total contributions count against room; day trading risk — CRA can deregister a TFSA and tax all its income as a business)
+4. Wrap-up: REITs are a great TFSA fit (kept TFSA-scoped only — no outside-TFSA tax comparison, that's its own future topic, see backlog); the US-dividend withholding tax gotcha (15% withheld even inside a TFSA, capital gains still 100% free, only RRSP/RRIF/LIRA are treaty-exempt); TFSA successor holder (spouse — account continues, no tax event, verbatim-CRA-quoted) vs. designated beneficiary (anyone else — value at death is tax-free, post-death earnings before payout are taxable, with a worked $80,000 example); a "Tips" section (multiple TFSA accounts across institutions are fine, only total contributions count against room)
 
-Originally planned as 5 posts, briefly considered splitting further into 6, then finalized as 4 — day 4 absorbed what would've been separate posts once the topics were fully researched and turned out to fit together as one coherent "what to hold and what happens later" wrap-up.
+Originally planned as 5 posts, briefly considered splitting further into 6, then finalized as 4 — day 4 absorbed what would've been separate posts once the topics were fully researched and turned out to fit together as one coherent "what to hold and what happens later" wrap-up. Day trading risk was cut from day 4 per feedback (topic deserves its own post, not a bullet buried in "Tips") — added to the Content Backlog below for a future series.
 
 After the TFSA series, pull the next topic from the Content Backlog below in the same day-by-day pattern (day count doesn't have to be 5 — let the topic's natural shape decide, as TFSA did).
 
