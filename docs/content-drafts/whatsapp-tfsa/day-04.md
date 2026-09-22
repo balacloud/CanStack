@@ -14,7 +14,7 @@ WHATSAPP DRAFT (review before posting):
 
 TFSA part 2 — what to hold, taxes, and what happens when you die.
 
-1. There are a few genuinely good picks for a TFSA — REITs, growth-focused ETFs (like all-in-ones), and Canadian dividend stocks all work well in here. REITs get an especially big win specifically because they don't get much of a tax break outside a TFSA either. Dividend stocks and growth investments, though, already get some tax benefits even outside a TFSA (a dividend tax credit, and a 50% break on capital gains) — so they're still great in here, just not "wasted" if you end up holding them outside it either.
+1. There are a few genuinely good picks for a TFSA — REITs, growth-focused ETFs, and Canadian dividend stocks all work well in here. A few examples widely used by Canadian investors: REIT ETFs like XRE or ZRE, all-in-one growth ETFs like XEQT or VEQT, and Canadian dividend ETFs like VDY or XDIV. REITs get an especially big win specifically because they don't get much of a tax break outside a TFSA either. Dividend stocks and growth investments, though, already get some tax benefits even outside a TFSA (a dividend tax credit, and a 50% break on capital gains) — so they're still great in here, just not "wasted" if you end up holding them outside it either. (Just naming what's commonly used as examples here, not a recommendation — always do your own research before buying anything.)
 
 2. US withholding tax: any US dividend gets a 15% withholding tax taken off, even inside a TFSA — the tax treaty exemption only applies to RRSP, RRIF, or LIRA. Capital gains on US stocks are still 100% tax-free in a TFSA, just not the dividends.
 
