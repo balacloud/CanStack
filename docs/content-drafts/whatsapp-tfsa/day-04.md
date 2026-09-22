@@ -10,7 +10,7 @@ Visual needed: none essential for this wrap-up post. A "successor holder vs bene
 
 ---
 
-WHATSAPP DRAFT (review before posting):
+WHATSAPP DRAFT — paragraph version (kept for reference/source citations above):
 
 TFSA part 2 — what to hold, taxes, and what happens when you die.
 
@@ -21,5 +21,46 @@ TFSA part 2 — what to hold, taxes, and what happens when you die.
 3. What happens when you die: name your spouse as successor holder, and per CRA, they "immediately become the new holder" — the account just continues, fully sheltered, nothing changes. Name someone else instead (a kid, etc.) as beneficiary, and CRA is clear they owe no tax on what they receive, up to the account's value on the day you died — but anything the account earns after that, before it's actually paid out, is taxable to them. Example: say a TFSA is worth $80,000 the day someone passes away. Named as successor holder (spouse only), it just carries on as theirs, untouched. Named as beneficiary instead (anyone else), they get that $80,000 tax-free, but if it earns another $1,500 before the estate settles and pays it out, that $1,500 is taxable income to them.
 
 Tips: you can have multiple TFSA accounts across different banks and brokers — the limit is on total contributions, not per account.
+
+That covers TFSA. RRSP next.
+
+---
+
+WHATSAPP DRAFT — mobile-formatted version (use this one for posting; uses WhatsApp's own *bold* syntax and short line breaks instead of dense paragraphs):
+
+*TFSA part 2 — what to hold, taxes, and what happens when you die*
+
+*1. What to hold*
+REITs, growth ETFs, and Canadian dividend stocks all work well in a TFSA.
+
+Examples people commonly use:
+REIT ETFs — XRE, ZRE
+All-in-one growth — XEQT, VEQT
+Dividend ETFs — VDY, XDIV
+
+REITs get an extra edge — they don't get much of a tax break outside a TFSA either.
+
+Dividend stocks and growth investments already get some tax benefit outside too (dividend tax credit, 50% break on capital gains), so they're not wasted if held outside either.
+
+(Just examples, not a recommendation — do your own research.)
+
+*2. US withholding tax*
+US dividends get a 15% withholding tax taken off, even inside a TFSA.
+
+Only RRSP, RRIF, or LIRA are exempt from this.
+
+Capital gains on US stocks stay 100% tax-free in a TFSA though.
+
+*3. What happens when you die*
+Name your spouse as successor holder → the TFSA just continues under their name. No tax, nothing changes.
+
+Name anyone else (kids, etc.) as beneficiary instead → they get the account's value tax-free at death, but anything it earns after that until it's paid out is taxable to them.
+
+Example — an $80,000 TFSA at death:
+Successor holder (spouse) → carries on untouched
+Beneficiary (anyone else) → gets $80,000 tax-free, pays tax only on growth earned before payout
+
+*Tips*
+You can have multiple TFSA accounts across different banks and brokers. Only your total contributions count against the limit.
 
 That covers TFSA. RRSP next.
