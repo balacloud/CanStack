@@ -1,3 +1,8 @@
+---
+name: canstack-start
+description: Run the CanStack session startup protocol as a gamified mission briefing — reads the core project docs, checks git status, and outputs a readiness score with a main quest, side quests, hazards, and power-ups. Use at the start of every session in the Canada_Conttractors (CanStack) repo.
+---
+
 # CanStack Session Start
 
 Run the CanStack session startup protocol as a short mission briefing. Keep the process rigorous, but make the output feel like a lightweight game loop that gives the user a clear start state, objective, hazards, and next move.

@@ -1,3 +1,8 @@
+---
+name: canstack-close
+description: Run the CanStack session close protocol — updates CURRENT_STATUS.md, KNOWN_ISSUES.md, and CANSTACK_SESSION_NOTES.md, verifies lint/build, commits the docs, updates memory, and outputs a close summary. Use at the end of every session in the Canada_Conttractors (CanStack) repo.
+---
+
 # CanStack Session Close
 
 Follow the CanStack session close protocol exactly as defined in `docs/stable/SESSION_PROTOCOL.md`.
