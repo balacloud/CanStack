@@ -1,6 +1,6 @@
 # CanStack Session Notes
 
-Last updated: September 22, 2026
+Last updated: September 29, 2026
 
 ## Summary
 
@@ -12,6 +12,44 @@ This workspace now contains a production-style Next.js 14 application for Canadi
 The app has been repositioned from a benefits-only dashboard into a broader contractor operations product. The homepage, navigation, and workspace structure were redesigned so the product now reads as one SaaS product serving different operator maturity stages.
 
 As of September 21, 2026, CanStack is also the name of a broader parent/legal umbrella org the user plans to incorporate under — this repo's contractor product is one of three planned products underneath it (see `docs/stable/ROADMAP.md` "Corporate Structure"). The other two (a personal finance education product, and a future licensed insurance aggregator) are separate future products/repos, not part of this codebase.
+
+## Session Entry — September 26-29, 2026
+
+What happened:
+
+- Ran the session startup protocol via `/canstack-start` — except the Skill tool couldn't find it: `.claude/skills/canstack-start.md` was a flat file, and Claude Code's skill scanner only discovers a directory form (`.claude/skills/<name>/SKILL.md`). Read the file manually instead, then diagnosed and fixed the root cause.
+- Restructured all three project skills (`canstack-start`, `canstack-close`, `finance-navigator`) into `<name>/SKILL.md` directories with proper YAML frontmatter (`name`/`description`), confirmed all three now register correctly, verified lint/build still pass, and committed (`4833a0c`). Added this as a new lasting rule in `docs/stable/GOLDEN_RULES.md` (Engineering Rule 6) so future skills are authored correctly from the start.
+- Built a new Claude Artifact, "The TFSA Endgame," covering day 4's WhatsApp content (what to hold — REITs/dividend ETFs/growth ETFs; the US withholding-tax mechanic with a worked $100→$85 example and a VFV-vs-HXQ comparison; successor-holder-vs-beneficiary rules at death). Verified two claims that weren't already confirmed in this project's records — LIRA's US withholding-tax treaty exemption, and HXQ's no-distribution ETF structure — against the IRS/Canada-US tax treaty and Horizons/Global X's own product page before publishing.
+- Caught and fixed an inconsistency: the two earlier TFSA artifacts are deliberately light-only (no dark-mode block at all), but the new Endgame artifact had added one by default — stripped it out to match the series.
+- Consolidated all three TFSA artifacts built so far (`TFSA Room, Three Ways`, `The TFSA Withdrawal Trap`, `The TFSA Endgame`) into one new artifact, "The TFSA Field Guide," with a chapter switcher and a single unified light-only design system, plus a consolidated footer with all sources.
+- Added real, clickable CRA source links (four of them) to the Field Guide's Withdrawal Trap citations, after the user asked for the withdrawal-trap claim to be backed by an actual CRA link rather than just a named citation.
+- Answered a live WhatsApp-group follow-up question — whether unused TFSA room carries forward beyond the current year's $7,000 annual limit — with a direct CRA citation (`"Calculate your TFSA contribution room"`). Not yet turned into a formal drafted post.
+
+What was built:
+
+- No product code, API routes, Supabase schema, compliance logic, or UX surface changed in this repo.
+- `.claude/skills/canstack-start/SKILL.md`, `.claude/skills/canstack-close/SKILL.md`, `.claude/skills/finance-navigator/SKILL.md` — restructured from flat files into the directory form, with frontmatter added. Commit `4833a0c`.
+- `docs/stable/GOLDEN_RULES.md` — new Engineering Rule 6 on skill authoring format.
+- Three private Claude Artifacts (not part of this repo's codebase): "The TFSA Endgame" (new), and "The TFSA Field Guide" (new, consolidating all three TFSA artifacts to date).
+- `docs/status/CURRENT_STATUS.md` updated with this session's summary.
+
+What was not done:
+
+- The WhatsApp-group contribution-room Q&A was answered directly but not turned into a formal series post or added to the content backlog as its own artifact section (offered, not yet actioned).
+- No RRSP content started yet — still next in the backlog queue from the prior session.
+- No actual scaffolding/repo created for the finance-education product itself — still content-only, pre-product.
+- Phase 1 validation work on the actual compliance/tax product (this repo's real priority #1) was not touched this session.
+
+Next session priorities:
+
+1. Resume Phase 1 validation / UX evaluation on the actual compliance/tax product — this remains the repo's top priority and has now been deferred across several tooling/content sessions.
+2. Decide whether to turn the TFSA contribution-room carry-forward Q&A into a formal WhatsApp post or backlog item.
+3. Start the RRSP WhatsApp content series (same process as TFSA), if content work continues to take priority over Phase 1 validation.
+4. Audit TODO-marked WCB compliance entries (AB stale, BC unverified) against official 2026 sources — still open from before.
+
+Session Close:
+
+Another content/tooling session with zero app-code risk — but Phase 1 validation (the repo's actual current priority #1) has now gone unaddressed across multiple sessions in a row while skill tooling and sibling-product content took the time instead. Worth flagging directly next session rather than letting it drift further.
 
 ## Session Entry — September 21-22, 2026
 

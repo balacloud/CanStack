@@ -1,12 +1,12 @@
 # Current Status
 
-Last updated: September 22, 2026
+Last updated: September 29, 2026
 
 ## Build Status
 
-- `npm run lint`: passing (verified September 22)
-- `npm run build`: passing (verified September 22)
-- No app code changed this session — verification-only re-check after docs/content/skill work
+- `npm run lint`: passing (verified September 29)
+- `npm run build`: passing (verified September 29)
+- No app code changed this session — tooling fix (skill discovery) plus finance-education content/artifact work only
 
 ## Runtime Status
 
@@ -33,6 +33,16 @@ Last updated: September 22, 2026
 - Production launch hardening (error boundaries, security headers, Stripe webhooks)
 - Audience validation and Phase 1 checklist execution
 - Sibling finance-education product (separate future repo) is actively producing content — see `docs/content-drafts/` and `.claude/skills/finance-navigator.md`; does not affect this repo's own build or roadmap directly
+
+## What Was Built — September 26-29, 2026
+
+Tooling fix + finance-education artifact session — no compliance/tax app code changed:
+
+- **Fixed Claude Code skill discovery** — `.claude/skills/canstack-start.md`, `canstack-close.md`, and `finance-navigator.md` were flat files, which Claude Code's Skill tool never registers (it only discovers `.claude/skills/<name>/SKILL.md`, a directory per skill). Restructured all three into that layout and added proper YAML frontmatter (`name`/`description`) so all three now appear correctly in the available-skills list and can be invoked directly (`/canstack-start`, `/canstack-close`, `/finance-navigator`). Commit `4833a0c`.
+- **TFSA WhatsApp series extended into Claude Artifacts**: built "The TFSA Endgame" (what to hold, US withholding tax, death/beneficiary rules — day 4's content as an interactive artifact) and consolidated all three TFSA artifacts built so far (`TFSA Room, Three Ways`, `The TFSA Withdrawal Trap`, `The TFSA Endgame`) into one artifact, "The TFSA Field Guide," with a chapter switcher and one unified light-only design system. Fixed an inconsistency where the Endgame artifact had accidentally added dark-mode support the other two never had.
+- Verified two previously-unconfirmed claims (LIRA's US withholding-tax treaty exemption; HXQ's no-distribution ETF structure) against the IRS/Canada-US treaty and Horizons/Global X's own product page before publishing, per the finance-navigator proactive fact-check rule.
+- Answered a WhatsApp-group follow-up question (unused TFSA room carrying forward beyond the current year's $7,000 limit) with a direct CRA citation — not yet turned into a formal post.
+- `npm run lint` and `npm run build` re-verified passing (no app code changed).
 
 ## What Was Built — September 21-22, 2026
 

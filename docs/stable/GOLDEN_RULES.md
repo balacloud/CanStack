@@ -18,6 +18,7 @@
 3. Prefer deterministic business logic for compliance-sensitive flows.
 4. Verify with `npm run lint` and `npm run build` after meaningful changes.
 5. Prefer small, well-documented operational scripts over manual repetitive commands.
+6. Any new Claude Code skill must be authored as `.claude/skills/<name>/SKILL.md` (a directory per skill), never a flat `.claude/skills/<name>.md` file — the Skill tool only discovers the directory form. Include YAML frontmatter (`name`, `description`) so it registers with an accurate description. (Learned 2026-09-26/29 after `canstack-start.md`, `canstack-close.md`, and `finance-navigator.md` silently never appeared in the available-skills list for months — commit `4833a0c`.)
 
 ## UX Rules
 
