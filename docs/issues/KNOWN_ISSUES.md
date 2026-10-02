@@ -128,6 +128,12 @@ Resolved: April 10, 2026
 
 Supabase schema migrated, 32 sources seeded, admin login page built, env vars configured. Admin dashboard live at `/en/admin`.
 
+### I. Federal BPA phase-out thresholds in `lib/canadian-tax.ts` were wrong (refinement of issue B)
+
+Resolved: October 2, 2026
+
+Issue B (April 9, 2026) correctly added the BPA credit but used the wrong phase-out income thresholds — $173,205–$253,414 — which are actually 2024's thresholds, carried forward and mislabeled as 2025, then indexed forward again into a wrong 2026 figure ($176,669). Discovered while cross-auditing a separate finance-education artifact against CRA's official T4127 Payroll Deductions Formulas (122nd edition). Corrected directly against CRA sources: 2025 full-amount threshold is $177,882 (CRA line 30000, confirmed by direct fetch), 2026 is $181,440 (CRA T4127, confirmed by direct fetch). The $253,414 (2025) and $258,482 (2026) minimum-amount thresholds were already correct. `npm run lint` and `npm run build` verified passing.
+
 ### A. Stale `.next` runtime causing missing vendor chunk errors
 
 Resolved: March 2026

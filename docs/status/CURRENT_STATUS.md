@@ -1,12 +1,12 @@
 # Current Status
 
-Last updated: September 29, 2026
+Last updated: October 2, 2026
 
 ## Build Status
 
-- `npm run lint`: passing (verified September 29)
-- `npm run build`: passing (verified September 29)
-- No app code changed this session — tooling fix (skill discovery) plus finance-education content/artifact work only
+- `npm run lint`: passing (verified October 2)
+- `npm run build`: passing (verified October 2)
+- One data-accuracy fix this session in `lib/canadian-tax.ts` (federal BPA phase-out thresholds); everything else was finance-education artifact work — see below
 
 ## Runtime Status
 
@@ -33,6 +33,14 @@ Last updated: September 29, 2026
 - Production launch hardening (error boundaries, security headers, Stripe webhooks)
 - Audience validation and Phase 1 checklist execution
 - Sibling finance-education product (separate future repo) is actively producing content — see `docs/content-drafts/` and `.claude/skills/finance-navigator.md`; does not affect this repo's own build or roadmap directly
+
+## What Was Built — October 2, 2026
+
+Finance-education artifact session that surfaced and fixed a real data-accuracy bug in this repo's own tax engine:
+
+- **Fixed federal Basic Personal Amount (BPA) phase-out thresholds in `lib/canadian-tax.ts`** — while independently auditing a separate finance-education artifact against CRA's official T4127 Payroll Deductions Formulas (122nd edition, eff. Jan 1, 2026), found that this repo's 2026 BPA full-amount threshold was wrong ($176,669, computed by indexing a mislabeled 2024 figure) instead of the CRA-confirmed $181,440. Tracing the same pattern back, the 2025 threshold was also wrong ($173,205, an actual 2024 value) instead of the CRA-confirmed $177,882 (verified directly against CRA's own line 30000 page). Both corrected. This affects federal tax estimates for any user with taxable income in the BPA phase-out band (roughly $177,882–$258,482 depending on year) — the error understated the BPA credit (overstated tax) for incomes just above the old, too-low thresholds. `npm run lint` and `npm run build` verified passing after the fix.
+- **TFSA Field Guide artifact updated** (not part of this repo's codebase) — added two clarifications to the withdrawal-mechanics chapter: CRA restores the full withdrawn amount including growth, not just original contributions; and withdrawing Dec 31 vs. Jan 1 changes the room-restoration wait by a full year.
+- **New finance-education artifact built**: "The Take-Home Ladder" — a $80K–$190K salary/take-home-pay comparison and live calculator across Alberta, BC, Ontario, Quebec, and Nova Scotia. Extensively audited against official government sources (CRA, gov.bc.ca, alberta.ca, Finances Québec, Revenu Québec, quebec.ca) before being approved for posting to the user's WhatsApp group — this cross-verification process is what surfaced the BPA bug above.
 
 ## What Was Built — September 26-29, 2026
 

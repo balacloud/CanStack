@@ -19,18 +19,18 @@ export const provinces = [
   { code: "YT", name: "Yukon" },
 ] as const;
 
-// BPA 2025 — non-refundable federal credit (CRA)
-const BPA_2025_FULL = 16129; // full amount for income ≤ $173,205
-const BPA_2025_MIN = 14538; // minimum at income ≥ $253,414
-const BPA_2025_FULL_THRESHOLD = 173205;
+// BPA 2025 — non-refundable federal credit (CRA line 30000: full amount for net income ≤ $177,882, floor at ≥ $253,414)
+const BPA_2025_FULL = 16129;
+const BPA_2025_MIN = 14538;
+const BPA_2025_FULL_THRESHOLD = 177882;
 const BPA_2025_MIN_THRESHOLD = 253414;
 const FEDERAL_LOWEST_RATE_2025 = 0.15;
 
-// BPA 2026 — 2.0% CRA indexation; credit rate drops to 14% (new first bracket)
+// BPA 2026 — credit rate drops to 14% (new first bracket); thresholds confirmed via CRA T4127 Payroll Deductions Formulas, 122nd edition (eff. Jan 1, 2026)
 const BPA_2026_FULL = 16452;
 const BPA_2026_MIN = 14829;
-const BPA_2026_FULL_THRESHOLD = 176669; // $173,205 × 1.02
-const BPA_2026_MIN_THRESHOLD = 258482; // confirmed by CRA 2026 brackets
+const BPA_2026_FULL_THRESHOLD = 181440;
+const BPA_2026_MIN_THRESHOLD = 258482;
 const FEDERAL_LOWEST_RATE_2026 = 0.14;
 
 // RRSP — 18% of prior-year earned income, capped at CRA annual limit

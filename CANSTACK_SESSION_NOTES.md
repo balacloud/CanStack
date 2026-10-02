@@ -1,6 +1,6 @@
 # CanStack Session Notes
 
-Last updated: September 29, 2026
+Last updated: October 2, 2026
 
 ## Summary
 
@@ -12,6 +12,42 @@ This workspace now contains a production-style Next.js 14 application for Canadi
 The app has been repositioned from a benefits-only dashboard into a broader contractor operations product. The homepage, navigation, and workspace structure were redesigned so the product now reads as one SaaS product serving different operator maturity stages.
 
 As of September 21, 2026, CanStack is also the name of a broader parent/legal umbrella org the user plans to incorporate under — this repo's contractor product is one of three planned products underneath it (see `docs/stable/ROADMAP.md` "Corporate Structure"). The other two (a personal finance education product, and a future licensed insurance aggregator) are separate future products/repos, not part of this codebase.
+
+## Session Entry — October 2, 2026
+
+What happened:
+
+- Helped clarify a live WhatsApp-group debate over TFSA withdrawal/re-contribution math ($37K vs. $27K question) — verified the correct mechanic directly against CRA's "Withdrawing from a TFSA" page (the full withdrawn amount, including growth, is what's restored to room, not just the original contribution) and drafted a reply for the user to post.
+- Folded two new clarifications into the existing "The TFSA Field Guide" artifact: the growth-counts-in-withdrawal point above, and a Dec-31-vs-Jan-1 withdrawal-timing nuance (one day's difference in withdrawal timing shifts room restoration by a full year).
+- Built a new finance-education artifact, "The Take-Home Ladder" — a $80K→$190K salary/take-home-pay walk in $10K increments across five provinces (AB, BC, ON, QC, NS), with a live net-pay calculator, full comparison charts, and a package-negotiation framework. Iterated through several rounds per user feedback (per-province dollar deltas, the live calculator, adding QC/NS which required modeling QPP/QPIP/the Quebec federal abatement — none of which this repo's own tax engine handles).
+- Ran a full accuracy audit of that artifact against official sources (CRA, gov.bc.ca, alberta.ca, Finances Québec, Revenu Québec, quebec.ca) at the user's explicit request before posting to the group. The audit surfaced a real bug: the federal Basic Personal Amount phase-out threshold used ($176,669 for 2026) didn't match CRA's own T4127 Payroll Deductions Formulas ($181,440). Traced the error back to a mislabeled 2024 figure.
+- **That same bug exists in this repo's own `lib/canadian-tax.ts`** (both the 2025 and 2026 thresholds were wrong, inherited from the same mislabeled-year error). Fixed directly in this repo: 2025 full-amount threshold corrected $173,205 → $177,882, 2026 corrected $176,669 → $181,440, both confirmed against CRA (line 30000 for 2025, T4127 122nd edition for 2026). `npm run lint` and `npm run build` verified passing after the fix.
+- Discussed selling a finance-education ebook as a monetization path — user clarified it was a curiosity question, not a decision to act on; no action taken, flagged the licensing nuance (general education content is lower regulatory risk than paid courses/signals, but not legal certainty) for whenever it comes up for real.
+
+What was built:
+
+- `lib/canadian-tax.ts` — federal BPA phase-out thresholds corrected for both 2025 and 2026 (the only app-code change this session; everything else is finance-education content, outside this repo's product surface).
+- "The TFSA Field Guide" artifact — updated with two new clarifications in the Withdrawal Trap chapter.
+- "The Take-Home Ladder" artifact (new) — 4-tab salary/take-home-pay tool covering 5 provinces, fully source-linked in its footer.
+- `docs/status/CURRENT_STATUS.md`, `docs/issues/KNOWN_ISSUES.md` updated with this session's fix and findings.
+
+What was not done:
+
+- Phase 1 validation on the actual compliance/tax product — still the repo's stated top priority, still untouched across yet another session of sibling-product content work.
+- The AB/BC WCB TODO-marked compliance entries — still open, still not audited against 2026 sources.
+- RRSP WhatsApp content series — still not started; a new salary/take-home series took priority instead, by the user's direction.
+- The BPA fix was scoped narrowly to the two threshold constants — did not do a broader review of `lib/canadian-tax.ts` or `lib/compliance-rules.ts` for other similar "indexed-from-a-stale-base-year" errors, since none were found incidentally and that would be new scope beyond what this session surfaced.
+
+Next session priorities:
+
+1. Resume Phase 1 validation / UX evaluation on the actual compliance/tax product — now deferred across four consecutive sessions (Sept 21-22, 26-29, Oct 2, and whatever precedes). Worth a direct decision: keep deferring deliberately, or actually block sibling-product work until this is done.
+2. Given the BPA bug was found via an *adjacent* audit, not a targeted one — consider a deliberate pass over `lib/canadian-tax.ts` and `lib/compliance-rules.ts` specifically checking for other "indexed from the wrong base year" errors, rather than waiting to stumble onto the next one.
+3. Audit TODO-marked WCB compliance entries (AB stale, BC unverified) against official 2026 sources — still open from before.
+4. Decide on the RRSP WhatsApp series vs. continuing the salary/take-home-pay series — the user steered toward salary content this session; worth confirming which one continues next.
+
+Session Close:
+
+Net positive session despite near-zero intentional app-code work: a sibling-product content audit surfaced and fixed a real, previously-undetected data-accuracy bug in this repo's own tax engine, the same class of issue the project has already fixed P0/P1 bugs for before. Phase 1 validation remains the elephant in the room — now four sessions deferred.
 
 ## Session Entry — September 26-29, 2026
 
