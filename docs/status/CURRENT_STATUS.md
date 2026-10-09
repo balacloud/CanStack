@@ -1,12 +1,16 @@
 # Current Status
 
-Last updated: October 2, 2026
+Last updated: October 9, 2026
 
 ## Build Status
 
-- `npm run lint`: passing (verified October 2)
-- `npm run build`: passing (verified October 2)
-- One data-accuracy fix this session in `lib/canadian-tax.ts` (federal BPA phase-out thresholds); everything else was finance-education artifact work — see below
+- `npm run lint`: passing (verified October 9)
+- `npm run build`: passing (verified October 9)
+- No app code changed this session — finance-education artifact work only (see below). `scripts/seed-sources.ts` has uncommitted finance-education source rows (see Current Blockers).
+
+## Direction Change — October 9, 2026
+
+**User has redirected priority back to this repo's original product: the contractor compliance/tax SaaS.** Four consecutive sessions (Sept 21 → Oct 9) went entirely into the sibling finance-education product instead. Next session's default objective should be Phase 1 validation / compliance product work, not finance-education content, unless the user says otherwise.
 
 ## Runtime Status
 
@@ -33,6 +37,18 @@ Last updated: October 2, 2026
 - Production launch hardening (error boundaries, security headers, Stripe webhooks)
 - Audience validation and Phase 1 checklist execution
 - Sibling finance-education product (separate future repo) is actively producing content — see `docs/content-drafts/` and `.claude/skills/finance-navigator.md`; does not affect this repo's own build or roadmap directly
+
+## What Was Built — October 8-9, 2026
+
+Finance-education content session — no compliance/tax app code changed:
+
+- **finance-navigator skill hardened**: added a "Strict verification mode" section to `.claude/skills/finance-navigator/SKILL.md`, locking in a stricter default audit standard (check boundary conditions not just typical cases, hunt for stale cross-references after any structural edit, distinguish "corroborated" from "directly confirmed" in citations, disclose simplifying assumptions next to the claim) after an on-request "way stricter" pass caught six real errors a normal pass had missed in the RRSP Field Guide artifact.
+- **"The RRSP Field Guide" artifact restructured into 3 chapters**: split a new "Employer Match" chapter out of "The Trade," covering the two commonly-conflated employer-match numbers (the salary-% cap vs. the match ratio, 50% vs. 100%). Re-ran the strict audit against the new structure and fixed 4 issues (a self-contradicting definition, a grammar error, a stale forward-reference, and a footer scope error left over from the restructure).
+- **Ported a Perplexity-built "TFSA Stocks & ETFs Risk Explorer" into The TFSA Field Guide** as a new "Invest" chapter (9 risk-tiered tabs), restyled to match the existing design system; later stripped all historical-return percentages per user direction (tickers only, no performance framing, to avoid implying advice).
+- **Recreated a friend's portfolio dashboard** as a separate one-off artifact ("Portfolio Glide Plan"), verified via automated diff against the source for 100% data fidelity — not part of the finance-navigator content series.
+- **Attempted to extend `scripts/seed-sources.ts`** with 27 new finance-education source rows (TFSA/RRSP/CPP/EI/payroll CRA + Quebec sources) to reuse this repo's existing Phase 1 data-sourcing infra for the sibling product rather than building a second system. **Uncommitted** — seeding against the live Supabase table failed with a DNS NXDOMAIN error on the project hostname (confirmed via multiple resolvers, not a sandbox artifact); user is checking the Supabase dashboard. Should be resolved and the seed actually run before this change is committed.
+- All three major finance-education artifacts (TFSA Field Guide, Take-Home Ladder, RRSP Field Guide) made responsive to desktop widths (previously phone-width only).
+- `npm run lint` and `npm run build` re-verified passing (no app code changed).
 
 ## What Was Built — October 2, 2026
 
@@ -135,7 +151,9 @@ Phase 1 data sourcing system — commit `7987bac`:
 
 ## Current Blockers
 
+- **Supabase project appears unreachable** — the project hostname used by `scripts/seed-sources.ts` and the admin dashboard's data layer fails DNS resolution entirely (confirmed via multiple resolvers, Oct 8 2026). Not yet confirmed whether the project was paused/deleted or the URL changed. Needs checking before any further Phase 1/2 data-sourcing work, and before the admin dashboard at `/en/admin` can be assumed functional.
 - Some WCB source URLs still returning errors in admin dashboard — stable parent URLs now seeded, re-check needed
 - Some compliance entries still contain TODO-style confidence notes (AB WCB stale, BC WCB unverified)
 - Audience validation still qualitative, not instrumented
 - Production launch hardening not yet started (error boundaries, security headers, Stripe webhooks)
+- **Phase 1 validation on the actual compliance/tax product has now gone untouched for 4+ consecutive sessions** (Sept 21 → Oct 9) while sibling finance-education work took priority — user has now redirected back to this product as of Oct 9, see "Direction Change" above

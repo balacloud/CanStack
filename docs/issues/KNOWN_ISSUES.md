@@ -26,6 +26,22 @@ Fix: commit 4e36a42 — `federalBrackets2026` added with 2.0% indexed thresholds
 
 ## Open — Medium (Existing)
 
+### 6b. Supabase project appears unreachable (new, October 8, 2026)
+
+Severity: medium (blocks Phase 1/2 data-sourcing work, admin dashboard data layer)
+
+Details:
+
+- `npx tsx scripts/seed-sources.ts` fails with `fetch failed` — the Supabase project hostname is DNS NXDOMAIN, confirmed against the local resolver and 8.8.8.8, while the base `supabase.co` domain resolves fine
+- not yet confirmed whether the project was paused, deleted, or the URL/env var is simply stale
+- user said they would check the Supabase dashboard directly; outcome not yet reported back
+
+Next action:
+
+- confirm project status in the Supabase dashboard
+- update `.env.local` / relevant env vars if the project URL changed, or restore/recreate the project if it was deprovisioned
+- re-run `scripts/seed-sources.ts` (currently has 27 uncommitted finance-education rows staged in addition to the original compliance sources) once resolved
+
 ### 7. Some compliance entries are intentionally conservative
 
 Severity: medium

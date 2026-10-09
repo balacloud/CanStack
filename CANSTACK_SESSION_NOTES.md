@@ -1,6 +1,6 @@
 # CanStack Session Notes
 
-Last updated: October 2, 2026
+Last updated: October 9, 2026
 
 ## Summary
 
@@ -12,6 +12,38 @@ This workspace now contains a production-style Next.js 14 application for Canadi
 The app has been repositioned from a benefits-only dashboard into a broader contractor operations product. The homepage, navigation, and workspace structure were redesigned so the product now reads as one SaaS product serving different operator maturity stages.
 
 As of September 21, 2026, CanStack is also the name of a broader parent/legal umbrella org the user plans to incorporate under — this repo's contractor product is one of three planned products underneath it (see `docs/stable/ROADMAP.md` "Corporate Structure"). The other two (a personal finance education product, and a future licensed insurance aggregator) are separate future products/repos, not part of this codebase.
+
+## Session Entry — October 8-9, 2026
+
+What happened:
+
+- Continued finance-education artifact work: ported a Perplexity-built "TFSA Stocks & ETFs Risk Explorer" into The TFSA Field Guide as a new "Invest" chapter (9 risk-tiered tabs), later stripped all 5-year return percentages per user direction (tickers only — printing historical returns reads too close to performance-based advice).
+- Recreated a friend's portfolio dashboard as a standalone artifact ("Portfolio Glide Plan"), verified against the source via automated diffing rather than eyeballing.
+- Added a dedicated "Employer Match" chapter to The RRSP Field Guide, splitting it out of "The Trade" — covers the two numbers people conflate (the salary-% cap vs. the match ratio, e.g. 50% vs. 100%).
+- User asked for progressively stricter audits ("triple audit," "way way way stricter"), which kept catching real errors a normal pass missed (a logic error in a comparative claim, stale cross-references after restructuring, an overstated citation, an undisclosed assumption). Per explicit instruction, codified this as a standing default in `.claude/skills/finance-navigator/SKILL.md` ("Strict verification mode") rather than something re-requested each time.
+- User asked to build a Python crawler for CRA sources; flagged this conflicted with finance-navigator's own locked decision to reuse this repo's existing Phase 1 data-sourcing infra rather than build a second system. User chose to extend the existing system instead. Drafted 27 new source rows in `scripts/seed-sources.ts` covering TFSA/RRSP/CPP/EI/payroll CRA and Quebec sources — **uncommitted**, and not yet actually seeded: running the seed script surfaced a real infrastructure problem, not a content problem — the Supabase project's hostname is DNS-unreachable from every resolver tried. User is checking the dashboard directly; not yet resolved.
+- Made all three major finance-education artifacts responsive to desktop widths (they were phone-width only before).
+- **User redirected session intent at the end**: back to this repo's original product, the contractor compliance/tax SaaS, after four consecutive sessions (Sept 21 → Oct 9) of sibling-product content work.
+
+What was built:
+
+- `.claude/skills/finance-navigator/SKILL.md` — "Strict verification mode" section added (durable, not a one-off request)
+- "The TFSA Field Guide" artifact — new "Invest" chapter (9 tabs), ticker-only after return-percentage removal
+- "The RRSP Field Guide" artifact — restructured to 3 chapters (The Trade / Employer Match / Real Cost), re-audited after restructure, 4 fixes applied
+- "Portfolio Glide Plan" artifact (new, one-off, not part of the content series)
+- `scripts/seed-sources.ts` — 27 new rows drafted, **uncommitted**, not yet seeded (blocked on Supabase DNS issue — see `docs/issues/KNOWN_ISSUES.md` #6b)
+- No changes to this repo's actual compliance/tax app code this session
+
+What was not done:
+
+- Phase 1 validation on the actual compliance/tax product — now 4+ sessions untouched; this is the explicit redirect for next session
+- Supabase project status unresolved — user is checking the dashboard themselves, outcome not yet known
+- `docs/content-drafts/whatsapp-rrsp/PROGRESS.md` not updated to reflect the new 3-chapter RRSP structure
+- RRSP content backlog items (room mechanics, withdrawal/HBP as standalone WhatsApp posts) still not drafted — only the artifact chapters exist so far
+
+## Session Close
+
+Session closed October 9, 2026. Next session's main objective, per explicit user direction, is the compliance/tax product itself — likely Phase 1 validation (the item that has been deferred across every session since September 21) or Supabase project recovery as a blocking prerequisite. The finance-education thread is paused, not abandoned — pick it back up from this entry when the user returns to it.
 
 ## Session Entry — October 2, 2026
 
