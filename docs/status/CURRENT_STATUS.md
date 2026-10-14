@@ -1,16 +1,16 @@
 # Current Status
 
-Last updated: October 9, 2026
+Last updated: October 14, 2026
 
 ## Build Status
 
-- `npm run lint`: passing (verified October 9)
-- `npm run build`: passing (verified October 9)
-- No app code changed this session — finance-education artifact work only (see below). `scripts/seed-sources.ts` has uncommitted finance-education source rows (see Current Blockers).
+- `npm run lint`: passing (verified October 14)
+- `npm run build`: passing (verified October 14)
+- No app code changed this session — docs + a new Claude Code skill only (see below). `scripts/seed-sources.ts` still has uncommitted-as-of-Oct-9 finance-education source rows (see Current Blockers) — unchanged this session.
 
-## Direction Change — October 9, 2026
+## Direction Change — October 9, 2026 (still in effect)
 
-**User has redirected priority back to this repo's original product: the contractor compliance/tax SaaS.** Four consecutive sessions (Sept 21 → Oct 9) went entirely into the sibling finance-education product instead. Next session's default objective should be Phase 1 validation / compliance product work, not finance-education content, unless the user says otherwise.
+User redirected priority back to this repo's original product: the contractor compliance/tax SaaS. **This is now the second session since that redirect where the stated next action — the Phase 1 UX scorecard — still hasn't been run.** Sessions since Oct 9 went instead into portfolio-strategy work (the funnel model, brand naming, a new `canstack-navigator` skill) — valuable, but it's not Phase 1 execution. Next session should either run the scorecard, or make an explicit, named decision to keep deferring it rather than letting it slide by default.
 
 ## Runtime Status
 
@@ -32,11 +32,23 @@ Last updated: October 9, 2026
 ## Current Focus
 
 - **CanStack is now the parent/legal umbrella org** (decided 2026-09-21) — this repo is one of three planned products underneath it, not the whole company
+- **Portfolio decisions locked 2026-10-13** (via new `.claude/skills/canstack-navigator/SKILL.md`): this product keeps the "CanStack" brand name; sibling finance-education is traffic-pull only, not monetized, no dedicated domain yet — see `docs/stable/ROADMAP.md` "Corporate Structure" for full reasoning
 - **All P0/P1 data accuracy bugs resolved** — product is now data-accurate
+- **Phase 1 UX validation is the actual next action** — `UX_EVALUATION_TEMPLATE.md` against the live product, not yet run despite being named the priority twice now (Oct 9, Oct 13)
 - **Phase 2 of data sourcing** — `compliance_values` propose/approve/publish workflow
 - Production launch hardening (error boundaries, security headers, Stripe webhooks)
-- Audience validation and Phase 1 checklist execution
-- Sibling finance-education product (separate future repo) is actively producing content — see `docs/content-drafts/` and `.claude/skills/finance-navigator.md`; does not affect this repo's own build or roadmap directly
+- Sibling finance-education content thread — see `docs/content-drafts/` and `.claude/skills/finance-navigator/SKILL.md`; does not affect this repo's own build or roadmap directly, now explicitly scoped as traffic-pull rather than "TBD"
+
+## What Was Built — October 13-14, 2026
+
+Portfolio-strategy session — no compliance/tax app code changed:
+
+- **New Claude Code skill: `.claude/skills/canstack-navigator/SKILL.md`** — auto-invoked persona for cross-product/brand/monetization/sequencing decisions across the CanStack umbrella, filling a gap neither `finance-navigator` (finance-education's own content) nor this repo's own `GOLDEN_RULES.md`/`ROADMAP.md` covered. Written as a Canadian indie-SaaS-operator persona (revenue-first, bootstrap-disciplined, holds real GST/HST-threshold/CAD-pricing/PIPEDA constraints) explicitly impatient with strategy sketches that don't end in a locked decision.
+- **Three portfolio decisions locked on first use of that skill**: (1) this product keeps the "CanStack" brand name rather than splitting into a separate customer-facing brand; (2) sibling finance-education is a traffic-pull content thread, not a monetized product — no paid course/tier, resolving a monetization doubt raised Oct 9 about competing with the free OSC-run GetSmarterAboutMoney.ca; (3) finance-education gets no dedicated domain for now, stays WhatsApp content plus a future footer/CTA on this product. All three written into `PROJECT_CONTEXT.md`, `docs/stable/ROADMAP.md`, and `docs/stable/GOLDEN_RULES.md`.
+- Two artifacts built to support this: "CanStack Overview" (a living product-reference page, republished this session to reflect the locked decisions) and "The CanStack Funnel" (the sketch that the traffic-pull decision was drawn from, modeled on Gap Inc.'s shared cross-brand nav strip).
+- Fixed two more stale `finance-navigator.md` path references (should be `finance-navigator/SKILL.md`) found in `docs/stable/GOLDEN_RULES.md` and `docs/stable/ROADMAP.md` while editing those files.
+- A user-supplied file (`SmartShopCA-Strategy-2027-2031.html`) was briefly discussed but confirmed to be an unrelated product mentioned by mistake — not part of this umbrella, no action taken.
+- `npm run lint` and `npm run build` verified passing (no app code changed).
 
 ## What Was Built — October 8-9, 2026
 

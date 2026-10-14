@@ -1,6 +1,8 @@
 # Golden Rules
 
-**Scope note (added 2026-09-21):** CanStack is now the parent/legal umbrella org (see `docs/stable/ROADMAP.md` "Corporate Structure"), and this repo holds one product under it — the contractor compliance/tax SaaS. Rules below govern this product. A separate future product (personal finance/investing education) has its own guardrails in `.claude/skills/finance-navigator.md`; Product Rule 6 and UX Rule 5 below are cross-references, not rules for this repo's own UI.
+**Scope note (added 2026-09-21):** CanStack is now the parent/legal umbrella org (see `docs/stable/ROADMAP.md` "Corporate Structure"), and this repo holds one product under it — the contractor compliance/tax SaaS. Rules below govern this product. A separate future product (personal finance/investing education) has its own guardrails in `.claude/skills/finance-navigator/SKILL.md`; Product Rule 6 and UX Rule 5 below are cross-references, not rules for this repo's own UI.
+
+**Decisions that span products** (which sibling monetizes, brand naming across the umbrella, sequencing between products, whether outside strategy material changes the portfolio) are not decided inside this repo's own rules — use `.claude/skills/canstack-navigator/SKILL.md` (added 2026-10-13).
 
 ## Product Rules
 
@@ -9,7 +11,7 @@
 3. Tax, penalty, and premium figures shown to users must be framed as estimates with disclaimers.
 4. Do not present regulated-adjacent guidance as professional tax, legal, insurance, or investment advice.
 5. Quebec tax/remittance treatment must explicitly account for Revenu Quebec where applicable.
-6. The sibling personal finance/investing education product (separate app under the CanStack umbrella, not part of this repo) must be general education only — no ticker-specific or personalized buy/sell recommendations. Naming common instruments (e.g. low-cost index ETFs) for illustration is fine; telling a specific user what to buy is not, and can trigger provincial securities registration requirements independent of app branding. Full guardrails: `.claude/skills/finance-navigator.md`.
+6. The sibling personal finance/investing education content thread (traffic-pull only, not monetized — locked 2026-10-13, not part of this repo) must be general education only — no ticker-specific or personalized buy/sell recommendations. Naming common instruments (e.g. low-cost index ETFs) for illustration is fine; telling a specific user what to buy is not, and can trigger provincial securities registration requirements independent of app branding. Full guardrails: `.claude/skills/finance-navigator/SKILL.md`.
 
 ## Engineering Rules
 

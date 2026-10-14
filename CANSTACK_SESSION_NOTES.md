@@ -1,6 +1,6 @@
 # CanStack Session Notes
 
-Last updated: October 9, 2026
+Last updated: October 14, 2026
 
 ## Summary
 
@@ -12,6 +12,38 @@ This workspace now contains a production-style Next.js 14 application for Canadi
 The app has been repositioned from a benefits-only dashboard into a broader contractor operations product. The homepage, navigation, and workspace structure were redesigned so the product now reads as one SaaS product serving different operator maturity stages.
 
 As of September 21, 2026, CanStack is also the name of a broader parent/legal umbrella org the user plans to incorporate under — this repo's contractor product is one of three planned products underneath it (see `docs/stable/ROADMAP.md` "Corporate Structure"). The other two (a personal finance education product, and a future licensed insurance aggregator) are separate future products/repos, not part of this codebase.
+
+## Session Entry — October 13-14, 2026
+
+What happened:
+
+- Started by asking for a refresher artifact explaining the compliance/tax product ("CanStack Overview") — built one, then kept it as a living reference, not a one-off.
+- User raised doubt about monetizing finance-education, citing GetSmarterAboutMoney.ca (OSC's free investor-education site) as direct competition for a paid-course plan.
+- User then flipped the framing: use finance-education as a top-of-funnel traffic source into the compliance product instead, explicitly modeled on Gap Inc.'s shared cross-brand nav strip (GAP/Old Navy/Banana Republic/Athleta) — sketched this as "The CanStack Funnel" artifact.
+- User noticed there was no persona governing cross-product/portfolio decisions (brand naming, monetization role, sequencing) the way `finance-navigator` governs finance-education's own content — asked for one to be built, auto-invoked the same way, carrying the characteristics of a Canadian operator who's actually taken a SaaS product to paying customers.
+- Built `.claude/skills/canstack-navigator/SKILL.md` accordingly. Used it immediately: ran all three open portfolio questions through it in one pass and got decisive answers instead of more sketching.
+- A user-shared file, `SmartShopCA-Strategy-2027-2031.html`, was initially folded into the navigator's "open questions" list, then the user clarified it was mentioned by mistake and belongs to an unrelated product — removed from the skill file and memory.
+- Locked three decisions: this product keeps the "CanStack" brand name; finance-education is traffic-pull only, not monetized; finance-education gets no dedicated domain for now. Wrote all three into `PROJECT_CONTEXT.md`, `ROADMAP.md`, `GOLDEN_RULES.md`, and republished the "CanStack Overview" artifact to match.
+- Session closed with the Phase 1 UX scorecard still not run — now flagged explicitly as having been the stated next action across two sessions in a row without execution.
+
+What was built:
+
+- `.claude/skills/canstack-navigator/SKILL.md` (new) — auto-invoked portfolio-decision persona
+- `docs/stable/ROADMAP.md`, `PROJECT_CONTEXT.md`, `docs/stable/GOLDEN_RULES.md` — three portfolio decisions locked in, plus two stale skill-path references fixed
+- "CanStack Overview" artifact — republished to reflect the locked decisions
+- "The CanStack Funnel" artifact (new) — the sketch the traffic-pull decision was drawn from
+- No compliance/tax app code changed
+
+What was not done:
+
+- **Phase 1 UX scorecard** — still not run, second session in a row where this was named the priority and something else took the time instead. This should not happen a third time without an explicit decision to deprioritize it.
+- Supabase project status — still unresolved, user hasn't reported back from checking the dashboard
+- AB/BC WCB TODO-marked compliance entries — still unverified
+- `scripts/seed-sources.ts`'s 27 queued finance-education rows — still not seeded (blocked on Supabase)
+
+## Session Close
+
+Session closed October 14, 2026. Next session should open with a direct question: run the Phase 1 UX scorecard now, or make an explicit call to keep deferring it. Don't let a third portfolio-strategy session happen by default — the portfolio-decision backlog is actually empty right now (all three open items got locked this session), so there's no structural reason left to avoid the scorecard.
 
 ## Session Entry — October 8-9, 2026
 

@@ -2,7 +2,7 @@
 
 ## Corporate Structure (added 2026-09-21)
 
-"CanStack" is the user's planned parent/legal incorporation entity, not necessarily this product's customer-facing brand name. This repo holds one product under that umbrella — the contractor compliance/tax SaaS described below. Other planned sibling products (personal finance/investing education, an insurance aggregator) are separate apps/brands under the same umbrella — see `docs/stable/ROADMAP.md` ("Corporate Structure — CanStack as Umbrella Org"). This product's own customer-facing brand name (whether it stays "CanStack" or becomes something else) is an open decision, not yet made.
+"CanStack" is the user's planned parent/legal incorporation entity, and — per the brand-naming decision locked 2026-10-13 (via `canstack-navigator`) — this product's own customer-facing name too, rather than splitting into a separate brand. This repo holds one product under that umbrella — the contractor compliance/tax SaaS described below. Other planned sibling products (personal finance/investing education, an insurance aggregator) are separate under the same umbrella — see `docs/stable/ROADMAP.md` ("Corporate Structure — CanStack as Umbrella Org"). Finance-education is a traffic-pull content thread, not a separate monetized product (same lock date) — see ROADMAP for the reasoning.
 
 ## Current Product
 
