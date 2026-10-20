@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# private local files - personal data / third-party copyrighted material, never commit
+docs/Logo/*resume*.docx
+docs/reference/canadianinatshirt-tfsa-transcripts.txt
