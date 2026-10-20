@@ -26,6 +26,105 @@ Fix: commit 4e36a42 — `federalBrackets2026` added with 2.0% indexed thresholds
 
 ## Open — Medium (Existing)
 
+### 11. Personal data and copyrighted content in public git history (new, October 20, 2026)
+
+Severity: high
+
+Details:
+
+- the GitHub repo `balacloud/CanStack` is public
+- three copies of a third party's resume (`docs/Logo/*resume*.docx`, pushed April 5) and third-party YouTube transcripts (`docs/reference/canadianinatshirt-tfsa-transcripts.txt`, pushed September 21) were untracked and gitignored in commit `f59b30a`, but remain readable in git history
+
+Next action:
+
+- make the repo private (user plans October 21)
+- decide whether to rewrite history with `git filter-repo` + force-push (needs explicit approval), then ask GitHub Support to purge cached views
+
+### 12. Pricing inconsistency (new, October 20, 2026)
+
+Severity: medium
+
+Details:
+
+- `lib/pricing.ts` charges $49 / $99 / $149 CAD per month (Starter / Growth / Scale)
+- the licensing/monetization audit (`docs/decisions/Monitization.md`) assumed $29/mo
+
+Next action:
+
+- pick one price point and update whichever side is wrong
+
+### 13. Recommendation engine links health and disability insurers (new, October 20, 2026)
+
+Severity: medium
+
+Details:
+
+- `lib/recommendations.ts` and `lib/providers.ts` link GreenShield (health/dental) and Edge Benefits (disability), plus Zensurance (commercial P&C)
+- all are plain homepage URLs, not affiliate links — but the field is named `affiliateLink`, `messages/en.json` calls them "real affiliate destinations", and the Starter plan lists an "Affiliate provider resource hub"
+- referral commissions on health/disability insurance require an LLQP licence (per `docs/decisions/Monitization.md`); none is held
+
+Next action:
+
+- mark these as non-monetized informational links (rename field, fix UI copy), or remove them
+
+### 14. No automated tests on tax or compliance logic (new, October 20, 2026)
+
+Severity: medium
+
+Details:
+
+- no test script in `package.json`, 0 test files
+- `lib/canadian-tax.ts`, `lib/compliance-rules.ts`, `lib/compliance-engine.ts` are untested; the BPA threshold bug (issue I) went unnoticed for ~6 months
+
+Next action:
+
+- add unit tests against CRA-published worked examples before any further rule changes
+
+### 15. Provincial minimum wages past their review dates (new, October 20, 2026)
+
+Severity: medium
+
+Details:
+
+- several entries in `PROVINCIAL_MINIMUM_WAGES` have `nextReviewDate` of 2026-04-01 or 2026-10-01, both passed, with values unchanged
+- NT, NU, YT are null/TODO; ON and QC carry TODO notes
+
+Next action:
+
+- verify each province against its official 2026 source and update or suppress
+
+### 16. Missing privacy policy and terms (new, October 20, 2026)
+
+Severity: medium
+
+Details:
+
+- no privacy policy page, terms of service, or consent checkbox, while the schema stores quiz responses and contractor profiles
+
+Next action:
+
+- add privacy and terms pages before any real user testing
+
+### 17. Stale "2025" copy in tax explainer (new, October 20, 2026)
+
+Severity: low
+
+Details:
+
+- `messages/en.json` says "2025 federal and provincial bracket logic is hardcoded locally" — the engine is year-aware and also covers 2026
+
+Next action:
+
+- update en/fr copy
+
+### 18. Duplicate monetization doc removed (October 20, 2026)
+
+Severity: resolved housekeeping
+
+Details:
+
+- `docs/decisions/Monitization.md` and `docs/decisions/Audited_NextSteps.md` were byte-identical; `Audited_NextSteps.md` was deleted, `Monitization.md` kept
+
 ### 6b. Supabase project appears unreachable (new, October 8, 2026)
 
 Severity: medium (blocks Phase 1/2 data-sourcing work, admin dashboard data layer)
@@ -40,7 +139,8 @@ Next action:
 
 - confirm project status in the Supabase dashboard
 - update `.env.local` / relevant env vars if the project URL changed, or restore/recreate the project if it was deprovisioned
-- re-run `scripts/seed-sources.ts` (currently has 27 uncommitted finance-education rows staged in addition to the original compliance sources) once resolved
+- re-run `scripts/seed-sources.ts` once resolved — it has 59 rows; the 27 finance-education rows were committed in `b3761b8` (Oct 9) but never seeded (corrected Oct 20; previously described as uncommitted)
+- still not resolving in DNS as of October 20, 2026
 
 ### 7. Some compliance entries are intentionally conservative
 

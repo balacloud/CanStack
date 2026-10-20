@@ -1,12 +1,15 @@
 # Current Status
 
-Last updated: October 14, 2026
+Last updated: October 20, 2026
+
+Strategy snapshot for external review: [docs/status/STRATEGY_SNAPSHOT.md](/Users/balajik/projects/Canada_Conttractors/docs/status/STRATEGY_SNAPSHOT.md)
 
 ## Build Status
 
-- `npm run lint`: passing (verified October 14)
-- `npm run build`: passing (verified October 14)
-- No app code changed this session — docs + a new Claude Code skill only (see below). `scripts/seed-sources.ts` still has uncommitted-as-of-Oct-9 finance-education source rows (see Current Blockers) — unchanged this session.
+- `npm run lint`: passing, 0 warnings / 0 errors (verified October 20)
+- `npm run build`: passing (verified October 20)
+- Tests: none — no test script, 0 test files
+- `scripts/seed-sources.ts` finance-education rows (27, file now 59 rows total) were **committed** in `b3761b8` (Oct 9) but **never seeded** — earlier notes calling them "uncommitted" were wrong
 
 ## Direction Change — October 9, 2026 (still in effect)
 
@@ -39,6 +42,17 @@ User redirected priority back to this repo's original product: the contractor co
 - Production launch hardening (error boundaries, security headers, Stripe webhooks)
 - Sibling finance-education content thread — see `docs/content-drafts/` and `.claude/skills/finance-navigator/SKILL.md`; does not affect this repo's own build or roadmap directly, now explicitly scoped as traffic-pull rather than "TBD"
 
+## What Was Built — October 20, 2026
+
+Repo hygiene + strategy snapshot — no app code changed:
+
+- **Untracked and gitignored** three copies of a third party's resume (`docs/Logo/*resume*.docx`) and third-party YouTube transcripts (`docs/reference/canadianinatshirt-tfsa-transcripts.txt`) — commit `f59b30a`. Files stay local. The GitHub repo is **public** and both remain in git history; user plans to make the repo private (Oct 21), history rewrite still undecided.
+- Pushed 6 previously-unpushed commits to `origin/main` (normal push).
+- Wrote `docs/status/STRATEGY_SNAPSHOT.md` for the user's strategist.
+- Removed `docs/decisions/Audited_NextSteps.md` — byte-identical duplicate of `docs/decisions/Monitization.md`, which is kept.
+- Logged new known issues: pricing mismatch ($49/$99/$149 vs $29), unlicensed health/disability insurer links, no tests, minimum wages past review date, misleading "affiliate" UI copy, missing privacy/terms.
+- `npm run lint` and `npm run build` verified passing.
+
 ## What Was Built — October 13-14, 2026
 
 Portfolio-strategy session — no compliance/tax app code changed:
@@ -58,7 +72,7 @@ Finance-education content session — no compliance/tax app code changed:
 - **"The RRSP Field Guide" artifact restructured into 3 chapters**: split a new "Employer Match" chapter out of "The Trade," covering the two commonly-conflated employer-match numbers (the salary-% cap vs. the match ratio, 50% vs. 100%). Re-ran the strict audit against the new structure and fixed 4 issues (a self-contradicting definition, a grammar error, a stale forward-reference, and a footer scope error left over from the restructure).
 - **Ported a Perplexity-built "TFSA Stocks & ETFs Risk Explorer" into The TFSA Field Guide** as a new "Invest" chapter (9 risk-tiered tabs), restyled to match the existing design system; later stripped all historical-return percentages per user direction (tickers only, no performance framing, to avoid implying advice).
 - **Recreated a friend's portfolio dashboard** as a separate one-off artifact ("Portfolio Glide Plan"), verified via automated diff against the source for 100% data fidelity — not part of the finance-navigator content series.
-- **Attempted to extend `scripts/seed-sources.ts`** with 27 new finance-education source rows (TFSA/RRSP/CPP/EI/payroll CRA + Quebec sources) to reuse this repo's existing Phase 1 data-sourcing infra for the sibling product rather than building a second system. **Uncommitted** — seeding against the live Supabase table failed with a DNS NXDOMAIN error on the project hostname (confirmed via multiple resolvers, not a sandbox artifact); user is checking the Supabase dashboard. Should be resolved and the seed actually run before this change is committed.
+- **Attempted to extend `scripts/seed-sources.ts`** with 27 new finance-education source rows (TFSA/RRSP/CPP/EI/payroll CRA + Quebec sources) to reuse this repo's existing Phase 1 data-sourcing infra for the sibling product rather than building a second system. **Committed in `b3761b8` but not seeded** (corrected Oct 20 — earlier described as uncommitted) — seeding against the live Supabase table failed with a DNS NXDOMAIN error on the project hostname (confirmed via multiple resolvers, not a sandbox artifact); user is checking the Supabase dashboard. Should be resolved and the seed actually run.
 - All three major finance-education artifacts (TFSA Field Guide, Take-Home Ladder, RRSP Field Guide) made responsive to desktop widths (previously phone-width only).
 - `npm run lint` and `npm run build` re-verified passing (no app code changed).
 
@@ -163,7 +177,10 @@ Phase 1 data sourcing system — commit `7987bac`:
 
 ## Current Blockers
 
-- **Supabase project appears unreachable** — the project hostname used by `scripts/seed-sources.ts` and the admin dashboard's data layer fails DNS resolution entirely (confirmed via multiple resolvers, Oct 8 2026). Not yet confirmed whether the project was paused/deleted or the URL changed. Needs checking before any further Phase 1/2 data-sourcing work, and before the admin dashboard at `/en/admin` can be assumed functional.
+- **Public repo with personal data in git history** — resume + copyrighted transcripts untracked as of Oct 20 but still readable in history; repo to be made private Oct 21, history rewrite decision pending
+- **Minimum wages past review date** — several provinces' 2026-04-01 / 2026-10-01 `nextReviewDate` values have passed without updates in `lib/compliance-rules.ts`
+- **No automated tests** on tax or compliance logic
+- **Supabase project appears unreachable** — the project hostname used by `scripts/seed-sources.ts` and the admin dashboard's data layer fails DNS resolution entirely (confirmed via multiple resolvers, Oct 8 2026; still not resolving Oct 20). Not yet confirmed whether the project was paused/deleted or the URL changed. Needs checking before any further Phase 1/2 data-sourcing work, and before the admin dashboard at `/en/admin` can be assumed functional.
 - Some WCB source URLs still returning errors in admin dashboard — stable parent URLs now seeded, re-check needed
 - Some compliance entries still contain TODO-style confidence notes (AB WCB stale, BC WCB unverified)
 - Audience validation still qualitative, not instrumented
